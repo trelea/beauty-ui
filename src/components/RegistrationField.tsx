@@ -15,6 +15,9 @@ interface Props {
     name: string;
     type: string;
     placeholder: string;
+    value?: string | any;
+    forSettings?: boolean;
+    forAdmin?: boolean;
 }
 
 export const RegistragionField: React.FC<Props> = ({
@@ -22,6 +25,9 @@ export const RegistragionField: React.FC<Props> = ({
     name,
     type,
     placeholder,
+    value,
+    forSettings,
+    forAdmin,
 }) => {
     const [hide, setHide] = React.useState<boolean>(true);
     return (
@@ -37,15 +43,27 @@ export const RegistragionField: React.FC<Props> = ({
                                     <FormControl>
                                         <Button
                                             variant="outline"
-                                            className="w-full flex justify-between bg-transparent border border-secondary rounded-lg px-6 text-black text-lg font-light focus:border-black focus-visible:border-black focus:ring-0 focus-visible:ring-0 focus:outline-none focus-visible:outline-none h-12 hover:bg-transparent"
+                                            className={`w-full flex justify-between bg-transparent border rounded-lg px-6 text-black text-lg font-light focus:border-black focus-visible:border-black focus:ring-0 focus-visible:ring-0 focus:outline-none focus-visible:outline-none h-12 hover:bg-transparent ${
+                                                forSettings || forAdmin
+                                                    ? "border-zinc-300"
+                                                    : "border-secondary"
+                                            }`}
                                         >
-                                            {field.value ? (
+                                            {forSettings ? (
+                                                format(
+                                                    field.value
+                                                        ? field.value
+                                                        : value,
+                                                    "PPP"
+                                                )
+                                            ) : field.value ? (
                                                 format(field.value, "PPP")
                                             ) : (
                                                 <span className="text-[#505050]">
                                                     Year of birth
                                                 </span>
                                             )}
+
                                             <CiCalendar />
                                         </Button>
                                     </FormControl>
@@ -64,7 +82,14 @@ export const RegistragionField: React.FC<Props> = ({
                         ) : (
                             <FormControl>
                                 <Input
-                                    className="placeholder:text-[#505050] placeholder:text-lg placeholder:font-light bg-transparent border border-secondary rounded-lg px-6 text-black text-lg font-light focus:border-black focus-visible:border-black focus:ring-0 focus-visible:ring-0 focus:outline-none focus-visible:outline-none h-12"
+                                    defaultValue={value}
+                                    className={`placeholder:text-[#505050] placeholder:${
+                                        forAdmin ? "text-base" : "text-lg"
+                                    } placeholder:font-light bg-transparent border rounded-lg px-6 text-black text-lg font-light focus:border-black focus-visible:border-black focus:ring-0 focus-visible:ring-0 focus:outline-none focus-visible:outline-none h-12 ${
+                                        forSettings || forAdmin
+                                            ? "border-zinc-300"
+                                            : "border-secondary"
+                                    }`}
                                     type={
                                         type === "password"
                                             ? hide

@@ -19,7 +19,7 @@ module.exports = {
         extend: {
             fontFamily: {
                 recoleta: ['"Recoleta"', "sans-serif"],
-                sonder: ['"Sonder Regular"', "sans-serif"],
+                sonder: ['"Sonder"', "sans-serif"],
                 celesse: ['"Celesse"', "sans-serif"],
             },
             colors: {

@@ -1,8 +1,8 @@
 import React from "react";
-import thumbPhone from "../assets/HeroPhone.png";
-import thumbTablet from "../assets/HeroTablet.png";
-import thumbLaptop from "../assets/HeroLaptop.png";
-import thumb from "../assets/Hero.png";
+import thumbPhone from "../assets/HeroPhone.jpg";
+import thumbTablet from "../assets/HeroTablet.jpg";
+import thumbLaptop from "../assets/HeroLaptop.jpg";
+import thumb from "../assets/Hero.jpg";
 
 export const Hero: React.FC = () => {
     return (

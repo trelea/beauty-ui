@@ -9,9 +9,10 @@ export const Reviews: React.FC = () => {
                 Reviews
             </h1>
             <div className="flex flex-col gap-3 md:hidden">
-                {lessReviews.map((r: review) => {
+                {lessReviews.map((r: review, _) => {
                     return (
                         <ReviewCard
+                            key={_}
                             reviewer={r.reviewer}
                             reviewerThumb={r.thumb}
                             stars={r.stars}
@@ -21,9 +22,10 @@ export const Reviews: React.FC = () => {
                 })}
             </div>
             <div className="hidden md:grid md:grid-cols-3 md:gap-3">
-                {moreReviews.map((r: review) => {
+                {moreReviews.map((r: review, _) => {
                     return (
                         <ReviewCard
+                            key={_}
                             reviewer={r.reviewer}
                             reviewerThumb={r.thumb}
                             stars={r.stars}

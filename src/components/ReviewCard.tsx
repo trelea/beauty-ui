@@ -21,7 +21,7 @@ export const ReviewCard: React.FC<Props> = ({
                     <img
                         src={reviewerThumb}
                         alt=""
-                        className="aspect-square size-7 2xl:size-9"
+                        className="aspect-square size-7 2xl:size-9 rounded-full"
                     />
                     <h1 className="text-base font-normal 2xl:text-xl">
                         {reviewer}
@@ -31,16 +31,22 @@ export const ReviewCard: React.FC<Props> = ({
                 <div className="flex gap-1">
                     {Array(stars)
                         .fill(0)
-                        .map((_) => {
+                        .map((_, __) => {
                             return (
-                                <IoStarSharp className="text-yellow-500 aspect-square size-4 lg:size-5 2xl:size-6" />
+                                <IoStarSharp
+                                    key={__}
+                                    className="text-yellow-500 aspect-square size-4 lg:size-5 2xl:size-6"
+                                />
                             );
                         })}
                     {Array(5 - stars)
                         .fill(0)
-                        .map((_) => {
+                        .map((_, __) => {
                             return (
-                                <IoStarOutline className="stroke-yellow-500 aspect-square size-4 lg:size-5 2xl:size-6" />
+                                <IoStarOutline
+                                    key={__}
+                                    className="stroke-yellow-500 aspect-square size-4 lg:size-5 2xl:size-6"
+                                />
                             );
                         })}
                 </div>

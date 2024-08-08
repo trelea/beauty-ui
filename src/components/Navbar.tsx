@@ -19,8 +19,10 @@ export const Navbar: React.FC = () => {
 
     return (
         <div className="fixed z-50 top-10 px-6 md:px-11 xl:px-40 2xl:px-56 w-full">
-            <nav className="w-full bg-white rounded-full px-6 py-3 flex justify-between items-center shadow-2xl">
-                <h1 className="font-medium text-xl lg:text-2xl">Logo</h1>
+            <nav className="w-full bg-white rounded-full px-6 py-3 flex justify-between items-center shadow-xl">
+                <Link to={"/"}>
+                    <h1 className="font-medium text-xl lg:text-2xl">Logo</h1>
+                </Link>
 
                 <ul className="hidden lg:flex gap-6 text-lg font-normal text-black items-center">
                     <li className="hover:underline decoration-black decoration-2 hover:cursor-pointer">
@@ -67,7 +69,15 @@ export const Navbar: React.FC = () => {
                                 <>
                                     <DropdownMenuItem className="focus:bg-transparent flex gap-4">
                                         <CiUser className="h-8 w-8 aspect-square p-1 rounded-full hover:bg-secondary" />
-                                        <CiSettings className="h-8 w-8 aspect-square p-1 rounded-full hover:bg-secondary" />
+                                        <Link
+                                            to={
+                                                user?.provider === "google"
+                                                    ? "/settings?_appointments=true"
+                                                    : "/settings?_edit_profile=true"
+                                            }
+                                        >
+                                            <CiSettings className="h-8 w-8 aspect-square p-1 rounded-full hover:bg-secondary" />
+                                        </Link>
                                     </DropdownMenuItem>
                                     <DropdownMenuItem className="w-full focus:bg-transparent flex gap-4">
                                         <Button
@@ -81,11 +91,7 @@ export const Navbar: React.FC = () => {
                             ) : (
                                 <>
                                     <DropdownMenuItem className="w-full focus:bg-transparent flex gap-4">
-                                        <Link
-                                            className="w-full"
-                                            to={"/login"}
-                                            preventScrollReset
-                                        >
+                                        <Link className="w-full" to={"/login"}>
                                             <Button className="rounded-xl bg-secondary w-full">
                                                 LogIn
                                             </Button>
@@ -95,7 +101,6 @@ export const Navbar: React.FC = () => {
                                         <Link
                                             className="w-full"
                                             to={"/register"}
-                                            preventScrollReset
                                         >
                                             <Button className="rounded-xl bg-secondary w-full">
                                                 SignUp
@@ -111,7 +116,16 @@ export const Navbar: React.FC = () => {
                 {user ? (
                     <div className="hidden lg:flex gap-4">
                         <CiUser className="h-8 w-8 aspect-square p-1 rounded-full hover:bg-secondary" />
-                        <CiSettings className="h-8 w-8 aspect-square p-1 rounded-full hover:bg-secondary" />
+                        <Link
+                            to={
+                                user?.provider === "google"
+                                    ? "/settings?_appointments=true"
+                                    : "/settings?_edit_profile=true"
+                            }
+                        >
+                            <CiSettings className="h-8 w-8 aspect-square p-1 rounded-full hover:bg-secondary" />
+                        </Link>
+
                         <CiLogout
                             onClick={() => logout.mutate()}
                             className="h-8 w-8 aspect-square p-1 rounded-full hover:bg-secondary"
@@ -119,12 +133,12 @@ export const Navbar: React.FC = () => {
                     </div>
                 ) : (
                     <div className="hidden lg:flex gap-4">
-                        <Link to={"/login"} preventScrollReset>
+                        <Link to={"/login"}>
                             <Button className="rounded-3xl bg-secondary">
                                 LogIn
                             </Button>
                         </Link>
-                        <Link to={"/register"} preventScrollReset>
+                        <Link to={"/register"}>
                             <Button className="rounded-3xl bg-secondary">
                                 SignUp
                             </Button>

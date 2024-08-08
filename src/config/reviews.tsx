@@ -1,4 +1,4 @@
-import thumb from "../assets/Reviewer.png";
+import thumb from "../assets/Reviewer.jpg";
 
 export interface review {
     thumb: any;

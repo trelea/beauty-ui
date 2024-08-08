@@ -9,7 +9,7 @@ import { AxiosError, AxiosResponse } from "axios";
 const formSchema = z.object({
     firstName: z.string().min(2).max(50),
     lastName: z.string().min(2).max(50),
-    phone: z.string().min(8).max(9),
+    phone: z.string().min(4).max(12),
     email: z.string().email(),
     password: z
         .string()
@@ -18,7 +18,7 @@ const formSchema = z.object({
                 /(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{10,20}$/.test(
                     v ?? ""
                 ),
-            "Password does not match to our rules"
+            "Password must contain at least one upper-case, one lower-case, one number, one special char minimum length of 10 chars"
         ),
     birthDate: z.date(),
 });

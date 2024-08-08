@@ -8,6 +8,7 @@ import { Services } from "@/components/Services";
 import React from "react";
 import beauty from "../../assets/Beauty.png";
 import salon from "../../assets/Salon.png";
+import { ScrollRestoration } from "react-router-dom";
 
 export const Index: React.FC = () => {
     return (
@@ -31,6 +32,7 @@ export const Index: React.FC = () => {
             </div>
             <Faq />
             <Contacts />
+            <ScrollRestoration />
         </BaseLoyout>
     );
 };

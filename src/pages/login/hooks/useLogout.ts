@@ -6,7 +6,10 @@ export const useLogout = (fn: () => void) => {
     const logout = useMutation({
         mutationFn: async () => await logoutFn(),
         onError: (err: AxiosError) => console.log(err.response?.data),
-        onSuccess: () => fn(),
+        onSuccess: () => {
+            window.location.pathname = "/";
+            fn();
+        },
     });
 
     return { logout };

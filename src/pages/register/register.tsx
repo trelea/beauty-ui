@@ -6,7 +6,7 @@ import { useForm } from "react-hook-form";
 import { SlSocialGoogle } from "react-icons/sl";
 import { useRegister } from "./hooks/useRegister";
 import { RegisterForm } from "@/components/RegisterForm";
-import { useSearchParams } from "react-router-dom";
+import { ScrollRestoration, useSearchParams } from "react-router-dom";
 import { OTPConfirmation } from "@/components/OTPConfirmation";
 
 export const Register: React.FC = (): JSX.Element => {
@@ -21,6 +21,7 @@ export const Register: React.FC = (): JSX.Element => {
             {queries.size === 1 && queries.get("token") && (
                 <OTPConfirmation token={String(queries.get("token"))} />
             )}
+            <ScrollRestoration />
         </main>
     );
 };
