@@ -6,9 +6,12 @@ import {
 } from "react-icons/pi";
 import { Link } from "react-router-dom";
 
-export const Contacts: React.FC = () => {
+export const Contacts = React.forwardRef<HTMLElement>((props, ref) => {
     return (
-        <footer className="py-6 px-8 md:flex md:justify-between md:gap-12 2xl:gap-20 md:px-11 xl:px-40 2xl:px-56 relative z-40">
+        <footer
+            ref={ref}
+            className="py-6 px-8 md:flex md:justify-between md:gap-12 2xl:gap-20 md:px-11 xl:px-40 2xl:px-56 relative z-40"
+        >
             {/* DATA */}
             <div className="grid grid-cols-2 gap-12 md:flex md:justify-between md:gap-12 2xl:gap-20">
                 <div className="flex flex-col gap-4">
@@ -85,4 +88,4 @@ export const Contacts: React.FC = () => {
             </div>
         </footer>
     );
-};
+});

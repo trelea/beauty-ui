@@ -34,7 +34,28 @@ export interface servicesReq {
     nails?: boolean | null;
 }
 
-export interface createMasterRes {}
+export interface getAppointmentsByStatusRes {
+    id: string;
+    time: string;
+    date: string;
+    phone: string;
+    description: string;
+    status: string;
+    created_at: string;
+    updated_at: string;
+    master: {
+        id: string;
+        firstName: string;
+        lastName: string;
+        thumbnail: string;
+    };
+    googleUser: any;
+    user: {
+        id: string;
+        firstName: string;
+        lastName: string;
+    };
+}
 
 export const authAdminFn = async (
     data: authAdminReq
@@ -42,10 +63,12 @@ export const authAdminFn = async (
     return await axiosApi.post<authAdminRes>("/auth/admin", data);
 };
 
-export const getMastersCountFn = async (): Promise<
-    AxiosResponse<{ masters: number }>
-> => {
-    return await axiosApi.get<{ masters: number }>("/masters/count");
+export const getMastersCountFn = async (
+    forCard?: boolean
+): Promise<AxiosResponse<{ masters: number }> | any> => {
+    return forCard
+        ? null
+        : await axiosApi.get<{ masters: number }>("/masters/count");
 };
 
 export const getMastersFn = async ({
@@ -98,4 +121,40 @@ export const updateMasterFn = async ({
         headers: { "Content-Type": "multipart/form-data" },
         params: { ...params },
     });
+};
+
+export const getAppointmentsByStatusFn = async ({
+    service,
+    status,
+}: {
+    service: "lashes" | "nails" | "brows";
+    status: "pending" | "approved" | "denied";
+}): Promise<AxiosResponse<getAppointmentsByStatusRes[]>> => {
+    return await axiosApi.get<getAppointmentsByStatusRes[]>(
+        `/appointments/${service}/${status}`
+    );
+};
+
+export const approveAppointmentFn = async ({
+    service,
+    id,
+}: {
+    service: "lashes" | "nails" | "brows" | string;
+    id: string;
+}): Promise<AxiosResponse<{ _id: string; status: string }>> => {
+    return await axiosApi.patch<{ _id: string; status: string }>(
+        `/appointments/${service}/approve/${id}`
+    );
+};
+
+export const denyAppointmentFn = async ({
+    service,
+    id,
+}: {
+    service: "lashes" | "nails" | "brows" | string;
+    id: string;
+}): Promise<AxiosResponse<{ _id: string; status: string }>> => {
+    return await axiosApi.patch<{ _id: string; status: string }>(
+        `/appointments/${service}/deny/${id}`
+    );
 };

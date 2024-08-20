@@ -9,9 +9,13 @@ interface Props {
 
 export const BaseLoyout: React.FC<Props> = ({ children, adminNavbar }) => {
     return (
-        <main className="w-screen bg-secondary">
-            {adminNavbar ? <AdminNavbar /> : <Navbar />}
-            {children}
-        </main>
+        <html lang="en">
+            <body>
+                <main className="w-screen bg-secondary">
+                    {adminNavbar ? <AdminNavbar /> : <Navbar />}
+                    {children}
+                </main>
+            </body>
+        </html>
     );
 };

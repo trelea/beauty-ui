@@ -19,7 +19,7 @@ export const AdminNavbar: React.FC = () => {
                 <ul className="grid grid-cols-3 gap-6 text-lg font-normal text-black justify-center items-center">
                     <li>
                         <Link
-                            to={"/admin/dashboard/appointments"}
+                            to={"/admin/dashboard/appointments?pending=true"}
                             className={`flex gap-2 justify-center items-center px-6 p-1 rounded-xl text-lg font-normal transition-colors ${
                                 path === "appointments"
                                     ? "bg-zinc-200 shadow-md"

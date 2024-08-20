@@ -7,8 +7,8 @@ export const useLogout = (fn: () => void) => {
         mutationFn: async () => await logoutFn(),
         onError: (err: AxiosError) => console.log(err.response?.data),
         onSuccess: () => {
-            window.location.pathname = "/";
             fn();
+            window.location.pathname = "/";
         },
     });
 

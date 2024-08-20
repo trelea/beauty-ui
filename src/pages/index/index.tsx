@@ -8,9 +8,20 @@ import { Services } from "@/components/Services";
 import React from "react";
 import beauty from "../../assets/Beauty.png";
 import salon from "../../assets/Salon.png";
-import { ScrollRestoration } from "react-router-dom";
+import { ScrollRestoration, useSearchParams } from "react-router-dom";
 
 export const Index: React.FC = () => {
+    const [query] = useSearchParams();
+    const faqRef = React.useRef<HTMLDivElement>(null);
+    const contactsRef = React.useRef<HTMLElement>(null);
+
+    React.useEffect(() => {
+        if (query.get("_ref_into") === "faq")
+            return faqRef.current?.scrollIntoView({ behavior: "smooth" });
+        if (query.get("_ref_into") === "contacts")
+            return contactsRef.current?.scrollIntoView({ behavior: "smooth" });
+    }, [query]);
+
     return (
         <BaseLoyout>
             <Hero />
@@ -30,8 +41,8 @@ export const Index: React.FC = () => {
                     className="absolute z-0 opacity-50 w-28 md:w-40 xl:w-80 2xl:w-72 right-0 -bottom-96"
                 />
             </div>
-            <Faq />
-            <Contacts />
+            <Faq ref={faqRef} />
+            <Contacts ref={contactsRef} />
             <ScrollRestoration />
         </BaseLoyout>
     );

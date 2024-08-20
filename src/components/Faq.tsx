@@ -1,8 +1,11 @@
 import React from "react";
 
-export const Faq: React.FC = () => {
+export const Faq = React.forwardRef<HTMLDivElement>((props, ref) => {
     return (
-        <div className="space-y-6 xl:space-y-9 2xl:space-y-12 px-8 py-9 md:px-11 md:py-14 xl:px-40 xl:py-24 2xl:px-56 relative z-40">
+        <div
+            ref={ref}
+            className="space-y-6 xl:space-y-9 2xl:space-y-12 px-8 py-9 md:px-11 md:py-14 xl:px-40 xl:py-24 2xl:px-56 relative z-40"
+        >
             <h1 className="text-black font-celesse text-[50px] font-normal md:text-[60px] xl:text-[90px]">
                 FAQ
             </h1>
@@ -32,4 +35,6 @@ export const Faq: React.FC = () => {
             </ul>
         </div>
     );
-};
+});
+
+// export const Faq: React.FC = () => {};

@@ -43,6 +43,7 @@ export const useCreateMaster = ({
         onSuccess: () => {
             form.reset();
             client.invalidateQueries({ queryKey: ["masters", page, search] });
+            client.invalidateQueries({ queryKey: ["masters", "count"] });
         },
     });
     const form = useForm<

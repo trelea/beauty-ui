@@ -5,6 +5,8 @@ import service3 from "../assets/Service3.png";
 import nails from "../assets/NailsCols2.png";
 
 import { PiArrowUpRightThin } from "react-icons/pi";
+import { Link } from "react-router-dom";
+import { toISO8601DateString } from "@/lib/utils";
 
 export const Services: React.FC = () => {
     return (
@@ -13,7 +15,12 @@ export const Services: React.FC = () => {
                 Services
             </h1>
             <div className="grid grid-cols-2 md:grid-cols-3">
-                <div className="relative">
+                <Link
+                    to={`/appointments?lashes=true&_check_date=${toISO8601DateString(
+                        new Date()
+                    )}`}
+                    className="relative"
+                >
                     <img src={service1} alt="" />
                     <h1 className="absolute top-4 left-5 text-white font-sonder text-3xl md:top-5 md:left-6 lg:top-6 lg:left-7 xl:top-7 xl:left-9 2xl:top-9 2xl:left-10 lg:text-4xl 2xl:text-5xl">
                         Lashes
@@ -21,9 +28,14 @@ export const Services: React.FC = () => {
                     <div className="aspect-square absolute bottom-2 right-2 md:bottom-1 md:right-1 w-full flex justify-end items-end">
                         <PiArrowUpRightThin className="p-1 hover:text-primary text-white bg-foreground rounded-full size-1/6 sm:size-1/5 shadow-2xl" />
                     </div>
-                </div>
+                </Link>
 
-                <div className="relative">
+                <Link
+                    className="relative"
+                    to={`/appointments?brows=true&_check_date=${toISO8601DateString(
+                        new Date()
+                    )}`}
+                >
                     <img src={service3} alt="" />
                     <h1 className="absolute top-4 left-5 text-white font-sonder text-3xl md:top-5 md:left-6 lg:top-6 lg:left-7 xl:top-7 xl:left-9 2xl:top-9 2xl:left-10 lg:text-4xl 2xl:text-5xl">
                         Brows
@@ -31,9 +43,14 @@ export const Services: React.FC = () => {
                     <div className="aspect-square absolute bottom-2 right-2 md:bottom-1 md:right-1 w-full flex justify-end items-end">
                         <PiArrowUpRightThin className="p-1 hover:text-primary text-white bg-foreground rounded-full size-1/6 sm:size-1/5 shadow-2xl" />
                     </div>
-                </div>
+                </Link>
 
-                <div className="relative col-span-2 md:hidden">
+                <Link
+                    className="relative col-span-2 md:hidden"
+                    to={`/appointments?nails=true&_check_date=${toISO8601DateString(
+                        new Date()
+                    )}`}
+                >
                     <img
                         src={nails}
                         alt=""
@@ -45,9 +62,14 @@ export const Services: React.FC = () => {
                     <div className="aspect-square absolute bottom-3 right-3 h-full flex justify-end items-end">
                         <PiArrowUpRightThin className="p-1 hover:text-primary text-white bg-foreground rounded-full size-[14%] shadow-2xl" />
                     </div>
-                </div>
+                </Link>
 
-                <div className="relative max-md:hidden">
+                <Link
+                    className="relative max-md:hidden"
+                    to={`/appointments?nails=true&_check_date=${toISO8601DateString(
+                        new Date()
+                    )}`}
+                >
                     <img src={service2} alt="" />
                     <h1 className="absolute top-4 left-5 text-white font-sonder text-3xl md:top-5 md:left-6 lg:top-6 lg:left-7 xl:top-7 xl:left-9 2xl:top-9 2xl:left-10 lg:text-4xl 2xl:text-5xl">
                         Nails
@@ -55,7 +77,7 @@ export const Services: React.FC = () => {
                     <div className="aspect-square absolute bottom-2 right-2 md:bottom-1 md:right-1 w-full flex justify-end items-end">
                         <PiArrowUpRightThin className="p-1 hover:text-primary text-white bg-foreground rounded-full size-1/6 sm:size-1/5 shadow-2xl" />
                     </div>
-                </div>
+                </Link>
             </div>
         </div>
     );

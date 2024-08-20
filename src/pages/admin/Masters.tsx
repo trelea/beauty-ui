@@ -11,7 +11,6 @@ import { TableMasters } from "@/components/TableMasters";
 import {
     Sheet,
     SheetContent,
-    SheetDescription,
     SheetHeader,
     SheetTitle,
     SheetTrigger,
@@ -31,7 +30,7 @@ export const Masters: React.FC = () => {
         setSearch,
         page,
         setPage,
-    } = useGetMasters();
+    } = useGetMasters(false);
     const { deleteMaster } = useDeleteMaster({
         page: page.get("page") as string,
         search,

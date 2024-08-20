@@ -20,10 +20,10 @@ export const SettingsOpts: React.FC<Props> = ({ params, setParams, user }) => {
     const { setLogout } = useUserStore((state) => state);
     const { logout } = useLogout(setLogout);
     return (
-        <Card className="shadow-lg rounded-xl">
+        <Card className="shadow-lg rounded-xl h-full">
             <CardContent className="p-2 md:p-3 xl:p-4 m-0">
                 <ul className="grid grid-cols-2 gap-2 md:grid-cols-4 md:gap-3 xl:flex xl:flex-col xl:gap-4">
-                    {user.provider === "google" && (
+                    {user?.provider === "google" && (
                         <Link to={"https://myaccount.google.com/"}>
                             <li
                                 className={`flex justify-center xl:justify-start items-center font-medium text-sm rounded-lg gap-2 p-2 md:text-base lg:text-lg xl:text-xl 2xl:text-xl xl:p-4 xl:gap-4 ${
@@ -68,7 +68,7 @@ export const SettingsOpts: React.FC<Props> = ({ params, setParams, user }) => {
                         </li>
                     )}
 
-                    <li
+                    {/* <li
                         onClick={() => setParams({ _enrolled_courses: "true" })}
                         className={`flex justify-center xl:justify-start items-center font-medium text-sm rounded-lg gap-2 p-2 md:text-base lg:text-lg xl:text-xl 2xl:text-xl xl:p-4 xl:gap-4 ${
                             params.get("_enrolled_courses") === "true"
@@ -78,7 +78,7 @@ export const SettingsOpts: React.FC<Props> = ({ params, setParams, user }) => {
                     >
                         <LiaChalkboardTeacherSolid className="aspect-square" />
                         <h1>Enrolled courses</h1>
-                    </li>
+                    </li> */}
                     <li
                         onClick={() => setParams({ _appointments: "true" })}
                         className={`flex justify-center xl:justify-start items-center font-medium text-sm rounded-lg gap-2 p-2 md:text-base lg:text-lg xl:text-xl 2xl:text-xl xl:p-4 xl:gap-4 ${
