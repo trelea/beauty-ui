@@ -1,7 +1,7 @@
 import React from "react";
 
 interface Props {
-    thumb: any;
+    thumb: string;
     name: string;
     profession: string;
 }

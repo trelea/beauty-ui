@@ -46,9 +46,7 @@ export const Masters: React.FC = () => {
                                 <Card className="p-0 m-0 border-none bg-transparent rounded-none shadow-none">
                                     <CardContent className="p-0 m-0 border-none bg-transparent rounded-none shadow-none">
                                         <MasterCard
-                                            thumb={`${
-                                                import.meta.env.VITE_THUMBS_URL
-                                            }/${m.master}`}
+                                            thumb={m.master}
                                             name={m.name}
                                             profession={m.profession}
                                         />
