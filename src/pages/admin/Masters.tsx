@@ -30,7 +30,7 @@ export const Masters: React.FC = () => {
         setSearch,
         page,
         setPage,
-    } = useGetMasters(false);
+    } = useGetMasters();
     const { deleteMaster } = useDeleteMaster({
         page: page.get("page") as string,
         search,
