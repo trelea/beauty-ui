@@ -3,9 +3,9 @@ import { getMastersCountFn, getMastersFn } from "../api/admin.apis";
 import React from "react";
 import { useSearchParams } from "react-router-dom";
 
-export const useGetMasters = (forCards?: boolean) => {
+export const useGetMasters = () => {
     const [search, setSearch] = React.useState<string>("");
-    const [page, setPage] = useSearchParams({ page: forCards ? "-1" : "1" });
+    const [page, setPage] = useSearchParams({ page: "1" });
 
     const { data, error, isError, isLoading, isFetching } = useQuery({
         queryKey: ["masters", String(page.get("page")), search],
@@ -22,12 +22,10 @@ export const useGetMasters = (forCards?: boolean) => {
 
     const { data: count } = useQuery({
         queryKey: ["masters", "count"],
-        queryFn: async () => await getMastersCountFn(forCards ? true : false),
+        queryFn: async () => await getMastersCountFn(),
     });
 
-    const totalPages: number = forCards
-        ? 0
-        : Math.ceil(Number(count?.data.masters) / 10);
+    const totalPages: number = Math.ceil(Number(count?.data.masters) / 10);
 
     return {
         data,
