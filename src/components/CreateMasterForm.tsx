@@ -14,7 +14,6 @@ import { Services } from "@/pages/admin/hooks/useCreateMaster";
 import { UploadThumbanil } from "./UploadThumbnail";
 import { SelectServices } from "./SelectServices";
 import { UseFormReturn } from "react-hook-form";
-import { SheetClose, SheetFooter } from "./ui/sheet";
 
 interface Props {
     form: UseFormReturn<any>;
@@ -114,19 +113,9 @@ export const CreateMasterForm: React.FC<Props> = ({ form, onSubmit }) => {
                     />
 
                     {/* SUBMIT */}
-                    {Object.keys(form.formState.errors).length === 0 ? (
-                        <SheetFooter className="w-full">
-                            <SheetClose className="w-full">
-                                <Button className="w-full" type="submit">
-                                    Save
-                                </Button>
-                            </SheetClose>
-                        </SheetFooter>
-                    ) : (
-                        <Button className="w-full" type="submit">
-                            Save
-                        </Button>
-                    )}
+                    <Button className="w-full" type="submit">
+                        Save
+                    </Button>
                 </div>
             </form>
         </Form>

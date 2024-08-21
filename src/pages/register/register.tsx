@@ -1,9 +1,4 @@
-import { RegistragionField } from "@/components/RegistrationField";
-import { Button } from "@/components/ui/button";
-import { Form } from "@/components/ui/form";
 import React from "react";
-import { useForm } from "react-hook-form";
-import { SlSocialGoogle } from "react-icons/sl";
 import { useRegister } from "./hooks/useRegister";
 import { RegisterForm } from "@/components/RegisterForm";
 import { ScrollRestoration, useSearchParams } from "react-router-dom";

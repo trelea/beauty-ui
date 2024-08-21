@@ -4,7 +4,6 @@ import { useGetMasters } from "./hooks/useGetMasters";
 import { SiReactquery } from "react-icons/si";
 import { Paginate } from "@/components/Pagination";
 import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
 import { FaSearch } from "react-icons/fa";
 import { useDeleteMaster } from "./hooks/useDeleteMaster";
 import { TableMasters } from "@/components/TableMasters";
@@ -17,6 +16,7 @@ import {
 } from "@/components/ui/sheet";
 import { CreateMasterForm } from "@/components/CreateMasterForm";
 import { useCreateMaster } from "./hooks/useCreateMaster";
+import { Button } from "@/components/ui/button";
 
 export const Masters: React.FC = () => {
     const {
@@ -60,8 +60,11 @@ export const Masters: React.FC = () => {
                         <FaSearch className="h-4 w-4 aspect-square" />
                     </div>
                     <Sheet>
-                        <SheetTrigger>
-                            <Button className="rounded-full shadow-xl px-10 text-base">
+                        <SheetTrigger asChild>
+                            <Button
+                                variant="outline"
+                                className="rounded-full shadow-xl"
+                            >
                                 Create Master
                             </Button>
                         </SheetTrigger>

@@ -7,5 +7,5 @@ export const Dashboard: React.FC = () => {
         sP({ pending: "true" });
         window.location.pathname = "/admin/dashboard/appointments";
     }, []);
-    return <div>Trelea</div>;
+    return <></>;
 };

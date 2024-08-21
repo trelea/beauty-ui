@@ -20,17 +20,17 @@ export const UpdateMaterForm = ({
     id,
     page,
     search,
-    setOpen,
-}: {
+}: // setOpen,
+{
     id: string;
     page: string;
     search: string;
-    setOpen: any;
+    // setOpen: any;
 }) => {
     const { data, error, isError, isFetching, isLoading } = useGetMaster({
         id,
     });
-    const { form, onSubmit } = useUpdateMaster({ data, page, search, setOpen });
+    const { form, onSubmit } = useUpdateMaster({ data, page, search });
 
     if (error || isError) alert("Error");
     if (isLoading || isFetching)

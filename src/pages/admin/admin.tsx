@@ -21,5 +21,5 @@ export const Admin: React.FC = () => {
         mutation.mutate({ username, password } as authAdminReq);
     }, []);
 
-    return <div>Trelea</div>;
+    return <></>;
 };

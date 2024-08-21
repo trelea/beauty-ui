@@ -1,6 +1,6 @@
 import React from "react";
 
-export const Faq = React.forwardRef<HTMLDivElement>((props, ref) => {
+export const Faq = React.forwardRef<HTMLDivElement>((_, ref) => {
     return (
         <div
             ref={ref}
