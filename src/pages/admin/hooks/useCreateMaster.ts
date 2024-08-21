@@ -4,6 +4,8 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { createMasterFn, servicesReq } from "../api/admin.apis";
+import { useToast } from "@/components/ui/use-toast";
+import { AxiosError } from "axios";
 
 export const Services = ["Lashes", "Brows", "Nails"];
 
@@ -30,6 +32,7 @@ export const useCreateMaster = ({
     page: string;
     search: string;
 }) => {
+    const { toast } = useToast();
     const client = useQueryClient();
     const mutation = useMutation({
         mutationFn: async ({
@@ -39,10 +42,20 @@ export const useCreateMaster = ({
             data: FormData;
             params: servicesReq;
         }) => await createMasterFn({ data, params }),
-        onError: (err) => console.log(err),
+        onError: (err: AxiosError<{ target: any }>) => {
+            // Email exception
+            if ((err.response?.data.target[0] as string) === "email")
+                toast({
+                    variant: "destructive",
+                    title: "Uh oh! Something went wrong.",
+                    description: "Masters must have unique emails.",
+                });
+        },
         onSuccess: () => {
             form.reset();
             client.invalidateQueries({ queryKey: ["masters", page, search] });
+            client.invalidateQueries({ queryKey: ["masters", "count"] });
+            window.location.reload();
         },
     });
     const form = useForm<

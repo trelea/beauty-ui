@@ -2,10 +2,11 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { getMastersRes, servicesReq, updateMasterFn } from "../api/admin.apis";
-import { AxiosResponse } from "axios";
+import { AxiosError, AxiosResponse } from "axios";
 import React from "react";
 import { toISO8601DateString } from "@/lib/utils";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useToast } from "@/components/ui/use-toast";
 
 const formSchema = z.object({
     firstName: z
@@ -30,7 +31,7 @@ const formSchema = z.object({
         .optional(),
     description: z
         .union([z.string().optional(), z.literal("")])
-        .transform((e) => (e === "" ? undefined : e))
+        .transform((e) => (e === "" ? "" : e))
         .optional(),
     services: z
         .union([
@@ -52,13 +53,14 @@ export const useUpdateMaster = ({
     data,
     page,
     search,
-    setOpen,
-}: {
+}: // setOpen,
+{
     data: AxiosResponse<getMastersRes> | undefined;
     page: string;
     search: string;
-    setOpen: any;
+    // setOpen: any;
 }) => {
+    const { toast } = useToast();
     const client = useQueryClient();
     const mutation = useMutation({
         mutationFn: async ({
@@ -70,11 +72,20 @@ export const useUpdateMaster = ({
             data: FormData;
             params: servicesReq;
         }) => await updateMasterFn({ id, data, params }),
-        onError: (err) => console.log(err),
+        onError: (err: AxiosError<{ target: any }>) => {
+            // Email exception
+            if ((err.response?.data.target[0] as string) === "email")
+                toast({
+                    variant: "destructive",
+                    title: "Uh oh! Something went wrong.",
+                    description: "Masters must have unique emails.",
+                });
+        },
         onSuccess: () => {
-            setOpen(false);
+            // setOpen(false);
             form.reset();
             client.invalidateQueries({ queryKey: ["masters", page, search] });
+            window.location.reload();
         },
     });
     const form = useForm<z.infer<typeof formSchema> | any>({

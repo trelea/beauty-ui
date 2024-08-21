@@ -11,7 +11,7 @@ export const Admin: React.FC = () => {
         onError: () => window.location.reload(),
         onSuccess: (res: AxiosResponse<authAdminRes>) => {
             setAdmin(res.data);
-            window.location.pathname = "/admin/dashboard/appointments";
+            window.location.pathname = "/admin/dashboard";
         },
     });
 
@@ -21,5 +21,5 @@ export const Admin: React.FC = () => {
         mutation.mutate({ username, password } as authAdminReq);
     }, []);
 
-    return <div>Trelea</div>;
+    return <></>;
 };

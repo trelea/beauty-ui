@@ -33,17 +33,20 @@ export const TableMasters: React.FC<Props> = ({
     page,
     search,
 }) => {
-    const [open, setOpen] = React.useState<boolean>(false);
+    // const [open, setOpen] = React.useState<boolean>(false);
     return (
         <Table>
             <TableHeader>
-                <TableHead>Image</TableHead>
-                <TableHead>Master</TableHead>
-                <TableHead>Email</TableHead>
-                <TableHead>Contact</TableHead>
-                <TableHead>Services</TableHead>
-                <TableHead>Actions</TableHead>
+                <TableRow>
+                    <TableHead>Image</TableHead>
+                    <TableHead>Master</TableHead>
+                    <TableHead>Email</TableHead>
+                    <TableHead>Contact</TableHead>
+                    <TableHead>Services</TableHead>
+                    <TableHead>Actions</TableHead>
+                </TableRow>
             </TableHeader>
+
             <TableBody>
                 {masters?.map((m: getMastersRes, __) => {
                     return (
@@ -96,8 +99,8 @@ export const TableMasters: React.FC<Props> = ({
                                     })}
                                 </div>
                             </TableCell>
-                            <TableCell className="flex py-2 gap-4">
-                                <Sheet open={open} onOpenChange={setOpen}>
+                            <TableCell className="flex py-2 gap-4" id={m.id}>
+                                <Sheet>
                                     <SheetTrigger asChild>
                                         <Button className="shadow-lg">
                                             Edit
@@ -111,8 +114,9 @@ export const TableMasters: React.FC<Props> = ({
                                             id={m.id}
                                             page={page}
                                             search={search}
-                                            setOpen={setOpen}
+                                            // setOpen={setOpen}
                                         />
+                                        {/* {m.id} */}
                                     </SheetContent>
                                 </Sheet>
 

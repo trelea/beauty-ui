@@ -3,7 +3,6 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { validateOTPFn, validateOTPReq } from "../api/register.apis";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { AxiosError } from "axios";
 
 const formSchema = z.object({
     otp: z.string().min(4).max(4),
@@ -18,8 +17,7 @@ export const useValidateOTP = (token: string) => {
             token: string;
             data: validateOTPReq;
         }) => await validateOTPFn({ token, data }),
-        onError: (err: AxiosError) =>
-            form.setError("otp", { message: "Wrong OTP" }),
+        onError: () => form.setError("otp", { message: "Wrong OTP" }),
         onSuccess: () => (window.location.pathname = "/login"),
     });
 
