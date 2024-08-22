@@ -10,6 +10,19 @@ export interface getAvailableRes {
     available: string[];
 }
 
+export interface createAppointmentReq {
+    masterId: string;
+    time: string;
+    date: string;
+    phone: string;
+    description?: string;
+    // FOR UNAUTH USERS OPTIONALS
+    firstName?: string;
+    lastName?: string;
+    email?: string;
+    birthDate?: string;
+}
+
 export interface createAppointmentRes {
     status: string;
     time: string;
@@ -58,13 +71,7 @@ export const createAppointmentFn = async ({
     body,
     service,
 }: {
-    body: {
-        masterId: string;
-        time: string;
-        date: string;
-        phone: string;
-        description?: string;
-    };
+    body: createAppointmentReq;
     service: "lashes" | "brows" | "nails";
 }): Promise<AxiosResponse<createAppointmentRes>> => {
     return await axiosApi.post<createAppointmentRes>(

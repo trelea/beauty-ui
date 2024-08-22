@@ -28,6 +28,11 @@ import { toISO8601DateString } from "@/lib/utils";
 import React from "react";
 import { Badge } from "./ui/badge";
 import { MdOutlineScheduleSend } from "react-icons/md";
+import { Input } from "./ui/input";
+import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
+import { CiCalendar } from "react-icons/ci";
+import { Calendar } from "./ui/calendar";
+import { format } from "date-fns";
 
 interface Props {
     data?: AxiosResponse<getAvailableRes[]>;
@@ -35,9 +40,10 @@ interface Props {
     date: Date;
     form: UseFormReturn<any>;
     onSubmit: (
-        valus: any,
+        values: any,
         { masterId, date }: { masterId: string; date: string }
     ) => void;
+    auth: boolean;
 }
 
 export const AppointmentsAvailableMasters: React.FC<Props> = ({
@@ -46,6 +52,7 @@ export const AppointmentsAvailableMasters: React.FC<Props> = ({
     date,
     form,
     onSubmit,
+    auth,
 }) => {
     const [t, setT] = React.useState<string | null>(null);
     return (
@@ -86,7 +93,7 @@ export const AppointmentsAvailableMasters: React.FC<Props> = ({
                                                     {master.lastName}
                                                 </TableCell>
 
-                                                <TableCell className="max-md:hiddend">
+                                                <TableCell className="max-md:hidden">
                                                     <Badge className="px-4 shadow-md">
                                                         {master.available
                                                             .length -
@@ -180,7 +187,7 @@ export const AppointmentsAvailableMasters: React.FC<Props> = ({
                                                             </DialogHeader>
                                                             <Form {...form}>
                                                                 <form
-                                                                    className="flex flex-col gap-2 md:gap-4 xl:gap-6"
+                                                                    className="flex flex-col gap-1 md:gap-2 xl:gap-3"
                                                                     onSubmit={form.handleSubmit(
                                                                         (
                                                                             data
@@ -197,6 +204,7 @@ export const AppointmentsAvailableMasters: React.FC<Props> = ({
                                                                             )
                                                                     )}
                                                                 >
+                                                                    {/* TIME */}
                                                                     <FormField
                                                                         control={
                                                                             form.control
@@ -264,6 +272,8 @@ export const AppointmentsAvailableMasters: React.FC<Props> = ({
                                                                             </FormItem>
                                                                         )}
                                                                     />
+
+                                                                    {/* CONTACT */}
                                                                     <FormField
                                                                         control={
                                                                             form.control
@@ -284,6 +294,139 @@ export const AppointmentsAvailableMasters: React.FC<Props> = ({
                                                                             </FormItem>
                                                                         )}
                                                                     />
+
+                                                                    {!auth && (
+                                                                        <>
+                                                                            {/* FIRST NAME */}
+                                                                            <FormField
+                                                                                control={
+                                                                                    form.control
+                                                                                }
+                                                                                name="firstName"
+                                                                                render={({
+                                                                                    field,
+                                                                                }) => (
+                                                                                    <FormItem>
+                                                                                        <FormControl>
+                                                                                            <Input
+                                                                                                className="py-2 h-12 text-sm md:text-base lg:text-lg focus:outline-none focus:ring-0 focus-visible:outline-none focus-visible:ring-0 border-zinc-400"
+                                                                                                {...field}
+                                                                                                placeholder="First name"
+                                                                                            />
+                                                                                        </FormControl>
+                                                                                        <FormMessage className="text-xs" />
+                                                                                    </FormItem>
+                                                                                )}
+                                                                            />
+
+                                                                            {/* LAST NAME */}
+                                                                            <FormField
+                                                                                control={
+                                                                                    form.control
+                                                                                }
+                                                                                name="lastName"
+                                                                                render={({
+                                                                                    field,
+                                                                                }) => (
+                                                                                    <FormItem>
+                                                                                        <FormControl>
+                                                                                            <Input
+                                                                                                className="py-2 h-12 text-sm md:text-base lg:text-lg focus:outline-none focus:ring-0 focus-visible:outline-none focus-visible:ring-0 border-zinc-400"
+                                                                                                {...field}
+                                                                                                placeholder="Last name"
+                                                                                            />
+                                                                                        </FormControl>
+                                                                                        <FormMessage className="text-xs" />
+                                                                                    </FormItem>
+                                                                                )}
+                                                                            />
+
+                                                                            {/* EMAIL */}
+                                                                            <FormField
+                                                                                control={
+                                                                                    form.control
+                                                                                }
+                                                                                name="email"
+                                                                                render={({
+                                                                                    field,
+                                                                                }) => (
+                                                                                    <FormItem>
+                                                                                        <FormControl>
+                                                                                            <Input
+                                                                                                type="email"
+                                                                                                className="py-2 h-12 text-sm md:text-base lg:text-lg focus:outline-none focus:ring-0 focus-visible:outline-none focus-visible:ring-0 border-zinc-400"
+                                                                                                {...field}
+                                                                                                placeholder="Email"
+                                                                                            />
+                                                                                        </FormControl>
+                                                                                        <FormMessage className="text-xs" />
+                                                                                    </FormItem>
+                                                                                )}
+                                                                            />
+
+                                                                            {/* BIRTH DATE */}
+                                                                            <FormField
+                                                                                control={
+                                                                                    form.control
+                                                                                }
+                                                                                name="birthDate"
+                                                                                render={({
+                                                                                    field,
+                                                                                }) => (
+                                                                                    <FormItem className="relative">
+                                                                                        <Popover>
+                                                                                            <PopoverTrigger
+                                                                                                asChild
+                                                                                            >
+                                                                                                <FormControl>
+                                                                                                    <Button
+                                                                                                        variant="outline"
+                                                                                                        className="text-sm md:text-base lg:text-lg focus:outline-none focus:ring-0 focus-visible:outline-none focus-visible:ring-0 border-zinc-400 w-full flex justify-between h-12 font-normal"
+                                                                                                    >
+                                                                                                        {field.value ? (
+                                                                                                            format(
+                                                                                                                field.value,
+                                                                                                                "PPP"
+                                                                                                            )
+                                                                                                        ) : (
+                                                                                                            <span className="text-[#505050]">
+                                                                                                                Year
+                                                                                                                of
+                                                                                                                birth
+                                                                                                            </span>
+                                                                                                        )}
+
+                                                                                                        <CiCalendar />
+                                                                                                    </Button>
+                                                                                                </FormControl>
+                                                                                            </PopoverTrigger>
+                                                                                            <PopoverContent className="w-fit">
+                                                                                                <Calendar
+                                                                                                    mode="single"
+                                                                                                    captionLayout="dropdown-buttons"
+                                                                                                    selected={
+                                                                                                        field.value
+                                                                                                    }
+                                                                                                    onSelect={
+                                                                                                        field.onChange
+                                                                                                    }
+                                                                                                    fromYear={
+                                                                                                        1950
+                                                                                                    }
+                                                                                                    toYear={
+                                                                                                        2050
+                                                                                                    }
+                                                                                                />
+                                                                                            </PopoverContent>
+                                                                                        </Popover>
+                                                                                        <FormMessage className="text-xs" />
+                                                                                    </FormItem>
+                                                                                )}
+                                                                            />
+                                                                        </>
+                                                                    )}
+
+                                                                    {/* DESCRIPTION */}
                                                                     <FormField
                                                                         control={
                                                                             form.control
@@ -296,7 +439,7 @@ export const AppointmentsAvailableMasters: React.FC<Props> = ({
                                                                                 <FormControl>
                                                                                     <Textarea
                                                                                         rows={
-                                                                                            4
+                                                                                            2
                                                                                         }
                                                                                         className="py-2 text-sm md:text-base lg:text-lg focus:outline-none focus:ring-0 focus-visible:outline-none focus-visible:ring-0 border-zinc-400"
                                                                                         {...field}

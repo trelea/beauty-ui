@@ -6,17 +6,26 @@ import { SiReactquery } from "react-icons/si";
 import { AppointmentsCalendar } from "./AppointmentsCalendar";
 import { AppointmentsAvailableMasters } from "./AppointmentsAvailableMasters";
 import { useCreateAppointment } from "@/pages/appointments/hooks/useCreateAppointment";
+import { useCreateAppointmentUnauth } from "@/pages/appointments/hooks/useCreateAppointmentUnauth";
 
 interface Props {
     _date: string;
     setParams: SetURLSearchParams;
+    auth: boolean;
 }
 
-export const NailsAppointments: React.FC<Props> = ({ _date, setParams }) => {
+export const NailsAppointments: React.FC<Props> = ({
+    _date,
+    setParams,
+    auth,
+}) => {
     const [date, setDate] = React.useState<Date | undefined>(new Date(_date));
     const { data, error, isError, isLoading, isFetching } =
         useGetAvailableNails(toISO8601DateString(date as Date));
     const { form, onSubmit } = useCreateAppointment({
+        service: "nails",
+    });
+    const { form: uForm, onSubmit: uOnSubmit } = useCreateAppointmentUnauth({
         service: "nails",
     });
 
@@ -40,8 +49,9 @@ export const NailsAppointments: React.FC<Props> = ({ _date, setParams }) => {
                 data={data}
                 service="nails"
                 date={date as Date}
-                form={form}
-                onSubmit={onSubmit}
+                form={auth ? form : uForm}
+                onSubmit={auth ? onSubmit : uOnSubmit}
+                auth={auth}
             />
         </div>
     );

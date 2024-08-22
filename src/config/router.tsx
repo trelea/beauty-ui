@@ -11,7 +11,6 @@ import { Register } from "@/pages/register/register";
 import { Settings } from "@/pages/settings/settings";
 import { useUserStore } from "@/store/store";
 import { Appointments } from "@/pages/appointments/appointments";
-
 import { createBrowserRouter } from "react-router-dom";
 
 const { user, admin } = useUserStore.getState();
@@ -22,7 +21,7 @@ export const router = createBrowserRouter([
     { path: "/login", element: <Login /> },
     { path: "/register", element: <Register /> },
     { path: "/settings", element: user ? <Settings /> : <Index /> },
-    { path: "/appointments", element: user ? <Appointments /> : <Login /> },
+    { path: "/appointments", element: <Appointments /> },
 
     { path: "/google/success", element: <SuccessGoogle /> },
     { path: "/google/fail", element: <FailGoogle /> },
