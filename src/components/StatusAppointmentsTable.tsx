@@ -130,6 +130,9 @@ export const StatusAppointmentsTable: React.FC<Props> = ({ status }) => {
                                                         <PiUserCircleFill className="h-6 w-6 m-0 p-0 aspect-square" />
                                                     </AvatarFallback>
                                                 </Avatar>
+                                                {appointment.unauthUser !==
+                                                    null &&
+                                                    `${appointment.unauthUser.firstName} ${appointment.unauthUser.lastName}`}
                                                 {appointment.user !== null &&
                                                     `${appointment.user.firstName} ${appointment.user.lastName}`}
                                                 {appointment.googleUser !==

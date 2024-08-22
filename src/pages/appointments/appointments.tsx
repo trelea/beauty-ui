@@ -4,10 +4,12 @@ import { LashesAppointments } from "@/components/LashesAppointments";
 import { BaseLoyout } from "@/components/Loyout";
 import { NailsAppointments } from "@/components/NailsAppointments";
 import { toISO8601DateString } from "@/lib/utils";
+import { useUserStore } from "@/store/store";
 import React from "react";
 import { ScrollRestoration, useSearchParams } from "react-router-dom";
 
 export const Appointments: React.FC = () => {
+    const auth = useUserStore((state) => state.user);
     const [params, setParams] = useSearchParams();
     const contactsRef = React.useRef<HTMLElement>(null);
 
@@ -89,6 +91,7 @@ export const Appointments: React.FC = () => {
                             <LashesAppointments
                                 _date={params.get("_check_date") as string}
                                 setParams={setParams}
+                                auth={auth ? true : false}
                             />
                         )}
                     {params.get("nails") === "true" &&
@@ -96,6 +99,7 @@ export const Appointments: React.FC = () => {
                             <NailsAppointments
                                 _date={params.get("_check_date") as string}
                                 setParams={setParams}
+                                auth={auth ? true : false}
                             />
                         )}
                     {params.get("brows") === "true" &&
@@ -103,6 +107,7 @@ export const Appointments: React.FC = () => {
                             <BrowsAppointments
                                 _date={params.get("_check_date") as string}
                                 setParams={setParams}
+                                auth={auth ? true : false}
                             />
                         )}
                 </div>

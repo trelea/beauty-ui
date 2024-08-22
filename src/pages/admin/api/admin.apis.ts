@@ -49,12 +49,13 @@ export interface getAppointmentsByStatusRes {
         lastName: string;
         thumbnail: string;
     };
-    googleUser: any;
+    googleUser: any | null;
     user: {
         id: string;
         firstName: string;
         lastName: string;
-    };
+    } | null;
+    unauthUser: { id: string; firstName: string; lastName: string } | null;
 }
 
 export const authAdminFn = async (
