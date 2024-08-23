@@ -7,13 +7,14 @@ interface Props {
 }
 
 export const UserCard: React.FC<Props> = ({ user }) => {
+    console.log(user);
     return (
         <Card className="shadow-lg rounded-xl">
             <CardHeader className="p-3 m-0 px-4 md:p-4 md:px-6">
                 {user?.provider ? (
                     <div className="flex items-center gap-4 md:gap-6">
                         <img
-                            src={user?._json?.picture}
+                            src={user?.photos[0].value}
                             alt=""
                             className="w-12 h-12 md:w-16 md:h-16 xl:h-20 xl:w-20 2xl:w-24 2xl:h-24 aspect-square p-0 m-0 rounded-full"
                         />
