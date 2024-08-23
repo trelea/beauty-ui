@@ -16,10 +16,9 @@ const formSchema = z.object({
     email: z.string().email(),
     birthDate: z.date(),
     description: z.string().optional(),
-    services: z
-        .array(z.string())
-        .min(1, { message: "You have to select at least one item." })
-        .max(3),
+    services: z.enum(["Nails", "Brows", "Lashes"], {
+        message: "You need to select at least one service.",
+    }),
     thumbnail: z
         .instanceof(File)
         .refine((file) => file.size !== 0, "Please upload an image"),
@@ -112,9 +111,9 @@ export const useCreateMaster = ({
         mutation.mutate({
             data: formData,
             params: {
-                lashes: values.services.includes("Lashes") ? true : false,
-                brows: values.services.includes("Brows") ? true : false,
-                nails: values.services.includes("Nails") ? true : false,
+                lashes: values.services === "Lashes" ? true : false,
+                brows: values.services === "Brows" ? true : false,
+                nails: values.services === "Nails" ? true : false,
             },
         });
     };
