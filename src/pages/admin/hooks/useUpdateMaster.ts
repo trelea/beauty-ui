@@ -29,16 +29,12 @@ const formSchema = z.object({
         .union([z.date(), z.literal("")])
         .transform((e) => (e === "" ? undefined : e))
         .optional(),
-    description: z
-        .union([z.string().optional(), z.literal("")])
-        .transform((e) => (e === "" ? "" : e))
-        .optional(),
+    description: z.string().optional(),
     services: z
         .union([
-            z
-                .array(z.string())
-                .min(1, { message: "You have to select at least one item." })
-                .max(3),
+            z.enum(["Nails", "Brows", "Lashes"], {
+                message: "You need to select at least one service.",
+            }),
             z.literal(""),
         ])
         .transform((e) => (e === "" ? undefined : e))
@@ -101,8 +97,8 @@ export const useUpdateMaster = ({
             thumbnail: "",
         },
     });
-
     React.useEffect(() => {
+        console.log(data);
         form.reset({
             firstName: data?.data.firstName,
             lastName: data?.data.lastName,
@@ -113,8 +109,9 @@ export const useUpdateMaster = ({
                     ? data?.data.birthDate.split("T")[0]
                     : new Date().toJSON().split("T")[0]
             ),
-            description: data?.data.description,
-            services: data?.data.services,
+            description:
+                data?.data.description === null ? "" : data?.data.description,
+            services: data?.data.services[0],
             thumbnail: new File([""], String(data?.data.thumbnail)),
         });
     }, [data]);
@@ -153,9 +150,9 @@ export const useUpdateMaster = ({
             id: data?.data.id as string,
             data: formData,
             params: {
-                lashes: values.services?.includes("Lashes") ? true : false,
-                brows: values.services?.includes("Brows") ? true : false,
-                nails: values.services?.includes("Nails") ? true : false,
+                lashes: values.services === "Lashes" ? true : false,
+                brows: values.services === "Brows" ? true : false,
+                nails: values.services === "Nails" ? true : false,
             },
         });
     };

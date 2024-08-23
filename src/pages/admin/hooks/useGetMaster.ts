@@ -8,5 +8,6 @@ export const useGetMaster = ({ id }: { id: string }) => {
             queryFn: async () => await getMasterFn(id),
         }
     );
+
     return { data, error, isError, isLoading, isFetching, isSuccess };
 };

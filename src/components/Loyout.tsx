@@ -11,7 +11,7 @@ interface Props {
 export const BaseLoyout: React.FC<Props> = ({ children, adminNavbar }) => {
     return (
         <>
-            <main className="w-screen bg-secondary">
+            <main className="w-screen bg-secondary overflow-x-hiddens">
                 {adminNavbar ? <AdminNavbar /> : <Navbar />}
                 {children}
             </main>

@@ -12,8 +12,8 @@ import { Button } from "./ui/button";
 import { Textarea } from "./ui/textarea";
 import { Services } from "@/pages/admin/hooks/useCreateMaster";
 import { UploadThumbanil } from "./UploadThumbnail";
-import { SelectServices } from "./SelectServices";
 import { UseFormReturn } from "react-hook-form";
+import { RadioGroup, RadioGroupItem } from "./ui/radio-group";
 
 interface Props {
     form: UseFormReturn<any>;
@@ -95,18 +95,28 @@ export const CreateMasterForm: React.FC<Props> = ({ form, onSubmit }) => {
                     <FormField
                         control={form.control}
                         name="services"
-                        render={() => (
+                        render={({ field }) => (
                             <FormItem>
                                 <FormLabel>Services</FormLabel>
-                                {Services.map((s, _) => {
-                                    return (
-                                        <SelectServices
-                                            key={_}
-                                            form={form}
-                                            service={s}
-                                        />
-                                    );
-                                })}
+                                <FormControl>
+                                    <RadioGroup
+                                        onValueChange={field.onChange}
+                                        defaultValue={field.value}
+                                    >
+                                        {Services.map((s, _) => {
+                                            return (
+                                                <FormItem className="flex items-center space-x-3 space-y-0">
+                                                    <FormControl>
+                                                        <RadioGroupItem
+                                                            value={s}
+                                                        />
+                                                    </FormControl>
+                                                    <FormLabel>{s}</FormLabel>
+                                                </FormItem>
+                                            );
+                                        })}
+                                    </RadioGroup>
+                                </FormControl>
                                 <FormMessage className="text-sm" />
                             </FormItem>
                         )}

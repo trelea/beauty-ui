@@ -9,12 +9,12 @@ import {
 import { RegistragionField } from "./RegistrationField";
 import { Textarea } from "./ui/textarea";
 import { Services } from "@/pages/admin/hooks/useCreateMaster";
-import { SelectServices } from "./SelectServices";
 import { Button } from "./ui/button";
 import { SiReactquery } from "react-icons/si";
 import { useUpdateMaster } from "@/pages/admin/hooks/useUpdateMaster";
 import { useGetMaster } from "@/pages/admin/hooks/useGetMaster";
 import { UploadThumbanil } from "./UploadThumbnail";
+import { RadioGroup, RadioGroupItem } from "./ui/radio-group";
 
 export const UpdateMaterForm = ({
     id,
@@ -114,18 +114,28 @@ export const UpdateMaterForm = ({
                     <FormField
                         control={form.control}
                         name="services"
-                        render={() => (
+                        render={({ field }) => (
                             <FormItem>
                                 <FormLabel>Services</FormLabel>
-                                {Services.map((s, _) => {
-                                    return (
-                                        <SelectServices
-                                            key={_}
-                                            form={form}
-                                            service={s}
-                                        />
-                                    );
-                                })}
+                                <FormControl>
+                                    <RadioGroup
+                                        onValueChange={field.onChange}
+                                        defaultValue={data?.data.services[0]}
+                                    >
+                                        {Services.map((s, _) => {
+                                            return (
+                                                <FormItem className="flex items-center space-x-3 space-y-0">
+                                                    <FormControl>
+                                                        <RadioGroupItem
+                                                            value={s}
+                                                        />
+                                                    </FormControl>
+                                                    <FormLabel>{s}</FormLabel>
+                                                </FormItem>
+                                            );
+                                        })}
+                                    </RadioGroup>
+                                </FormControl>
                                 <FormMessage className="text-sm" />
                             </FormItem>
                         )}

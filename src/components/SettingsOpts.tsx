@@ -3,7 +3,6 @@ import { Card, CardContent } from "./ui/card";
 import { Link, SetURLSearchParams } from "react-router-dom";
 import { GrUserSettings } from "react-icons/gr";
 import { RiLockPasswordLine, RiCalendarScheduleLine } from "react-icons/ri";
-import { LiaChalkboardTeacherSolid } from "react-icons/lia";
 import { MdLogout } from "react-icons/md";
 import { Button } from "./ui/button";
 import { useUserStore } from "@/store/store";
