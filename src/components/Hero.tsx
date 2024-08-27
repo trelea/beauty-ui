@@ -3,8 +3,10 @@ import thumbPhone from "../assets/HeroPhone.jpg";
 import thumbTablet from "../assets/HeroTablet.jpg";
 import thumbLaptop from "../assets/HeroLaptop.jpg";
 import thumb from "../assets/Hero.jpg";
+import { usei18nUtil } from "@/utils/usei18nUtil";
 
 export const Hero: React.FC = () => {
+    const { t } = usei18nUtil();
     return (
         <div className="relative w-screen z-40">
             <div className="md:hidden">
@@ -25,9 +27,8 @@ export const Hero: React.FC = () => {
 
             <div className="absolute w-full px-8 pb-6 md:px-11 md:pb-9 xl:px-40 xl:pb-14 2xl:px-56 bottom-0 flex justify-between pt-64 bg-gradient-to-b from-transparent to-[#252525]">
                 <div className="flex flex-col-reverse md:flex-col">
-                    <p className="font-recoleta text-white text-lg md:text-xl xl:text-2xl 2xl:text-4xl md:w-80 xl:w-96 2xl:w-[560px]">
-                        This company was created to make it easier to take care
-                        of yourself
+                    <p className="font-celesse text-white text-lg md:text-xl xl:text-2xl 2xl:text-4xl md:w-80 xl:w-96 2xl:w-[560px]">
+                        {t("home.hero.desc")}
                     </p>
                     <h1 className="text-6xl md:text-[110px] xl:text-[160px] 2xl:text-[200px] font-sonder text-white">
                         Beauty Salon

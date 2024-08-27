@@ -6,6 +6,8 @@ import { SlSocialGoogle } from "react-icons/sl";
 import { Link } from "react-router-dom";
 import { useSigninGoogle } from "@/hooks/useSignInGoogle";
 import { UseFormReturn } from "react-hook-form";
+import { usei18nUtil } from "@/utils/usei18nUtil";
+import { Trans } from "react-i18next";
 
 interface Props {
     form: UseFormReturn<any>;
@@ -15,11 +17,12 @@ interface Props {
 export const RegisterForm: React.FC<Props> = ({ form, onSubmit }) => {
     // GOOGLE SIGNIN
     const { signinWithGoogle } = useSigninGoogle();
+    const { t, lang } = usei18nUtil();
 
     return (
         <div className="container bg-white rounded-lg p-6 shadow-lg max-sm:mx-4 sm:w-[550px]">
-            <h1 className="text-black font-recoleta text-4xl font-normal text-center mb-6">
-                Register
+            <h1 className="text-black font-celesse text-5xl font-normal text-center mb-6">
+                {t("register.register")}
             </h1>
             <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)}>
@@ -29,7 +32,7 @@ export const RegisterForm: React.FC<Props> = ({ form, onSubmit }) => {
                             form={form}
                             name="firstName"
                             type="text"
-                            placeholder="First Name"
+                            placeholder={t("register.firstName")}
                         />
 
                         {/* LAST NAME */}
@@ -37,7 +40,7 @@ export const RegisterForm: React.FC<Props> = ({ form, onSubmit }) => {
                             form={form}
                             name="lastName"
                             type="text"
-                            placeholder="Last Name"
+                            placeholder={t("register.lastName")}
                         />
 
                         {/* PHONE */}
@@ -45,7 +48,7 @@ export const RegisterForm: React.FC<Props> = ({ form, onSubmit }) => {
                             form={form}
                             name="phone"
                             type="tel"
-                            placeholder="Phone"
+                            placeholder={t("register.phone")}
                         />
 
                         {/* EMAIL */}
@@ -53,7 +56,7 @@ export const RegisterForm: React.FC<Props> = ({ form, onSubmit }) => {
                             form={form}
                             name="email"
                             type="email"
-                            placeholder="Email"
+                            placeholder={t("register.email")}
                         />
 
                         {/* PASSWORD */}
@@ -61,7 +64,7 @@ export const RegisterForm: React.FC<Props> = ({ form, onSubmit }) => {
                             form={form}
                             name="password"
                             type="password"
-                            placeholder="Password"
+                            placeholder={t("register.password")}
                         />
 
                         {/* BIRTH DATE */}
@@ -69,12 +72,12 @@ export const RegisterForm: React.FC<Props> = ({ form, onSubmit }) => {
                             form={form}
                             name="birthDate"
                             type="date"
-                            placeholder="Birth date"
+                            placeholder={t("register.birthDate")}
                         />
 
                         {/* SUBMIT */}
                         <Button className="w-full bg-primary text-center text-[#505050] text-lg font-normal h-12 border border-[#A7B15A]">
-                            Register
+                            {t("register.register")}
                         </Button>
                     </div>
                 </form>
@@ -89,12 +92,18 @@ export const RegisterForm: React.FC<Props> = ({ form, onSubmit }) => {
                 </div>
             </div>
 
-            <h1 className="text-center mt-14">
-                Already have an account?{" "}
-                <Link to={"/login"} preventScrollReset className="underline">
-                    Login now
-                </Link>
-            </h1>
+            <Trans i18nKey={"register.alreadyAcc"}>
+                <h1 className="text-center mt-14">
+                    Already have an account?{" "}
+                    <Link
+                        to={`/${lang}/login`}
+                        preventScrollReset
+                        className="underline"
+                    >
+                        Login now
+                    </Link>
+                </h1>
+            </Trans>
         </div>
     );
 };

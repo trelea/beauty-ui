@@ -17,6 +17,8 @@ import {
 import { CreateMasterForm } from "@/components/CreateMasterForm";
 import { useCreateMaster } from "./hooks/useCreateMaster";
 import { Button } from "@/components/ui/button";
+import { useParams } from "react-router-dom";
+import { usei18nUtil } from "@/utils/usei18nUtil";
 
 export const Masters: React.FC = () => {
     const {
@@ -39,10 +41,15 @@ export const Masters: React.FC = () => {
         page: page.get("page") as string,
         search,
     });
+    const { lang } = useParams();
+    const { setLangUrl, t } = usei18nUtil();
+    React.useEffect(() => setLangUrl(lang as "en" | "ro" | "ru"), [lang]);
+
     React.useEffect(
         () => setPage({ page: page.get("page") as string }),
         [page]
     );
+
     if (error || isError) alert("Error");
 
     return (
@@ -52,7 +59,7 @@ export const Masters: React.FC = () => {
                     <Input
                         value={search}
                         type="text"
-                        placeholder="Search master..."
+                        placeholder={t("adminMasters.search")}
                         className="rounded-full focus-visible:ring-0 focus-visible:outline-none text-base p-6 shadow-xl focus:ring-0 focus:outline-none focus-visible:ring-offset-0 pl-10"
                         onChange={(e) => setSearch(e.target.value)}
                     />
@@ -65,12 +72,14 @@ export const Masters: React.FC = () => {
                                 variant="outline"
                                 className="rounded-full shadow-xl"
                             >
-                                Create Master
+                                {t("adminMasters.createBtn")}
                             </Button>
                         </SheetTrigger>
                         <SheetContent>
                             <SheetHeader>
-                                <SheetTitle>Create master</SheetTitle>
+                                <SheetTitle>
+                                    {t("adminMasters.createBtn")}
+                                </SheetTitle>
                             </SheetHeader>
                             <CreateMasterForm form={form} onSubmit={onSubmit} />
                         </SheetContent>
@@ -79,7 +88,9 @@ export const Masters: React.FC = () => {
                 {(isLoading || isFetching) && (
                     <div className="flex flex-col justify-center items-center w-full flex-grow">
                         <SiReactquery className="h-12 w-12 md:w-16 md:h-12 xl:h-20 xl:w-20 aspect-square animate-spin" />
-                        <h1 className="text-lg font-medium">Loading...</h1>
+                        <h1 className="text-lg font-medium">
+                            {t("adminMasters.load")}
+                        </h1>
                     </div>
                 )}
                 {Number(data?.data.length) >= 1 && (

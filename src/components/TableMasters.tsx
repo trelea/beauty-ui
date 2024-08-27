@@ -19,6 +19,7 @@ import {
 } from "./ui/sheet";
 import { UpdateMaterForm } from "./UpdateMasterForm";
 import { getMastersRes } from "@/pages/admin/api/admin.apis";
+import { useTranslation } from "react-i18next";
 
 interface Props {
     masters?: any[];
@@ -34,16 +35,27 @@ export const TableMasters: React.FC<Props> = ({
     search,
 }) => {
     // const [open, setOpen] = React.useState<boolean>(false);
+    const { t } = useTranslation();
     return (
         <Table>
             <TableHeader>
                 <TableRow>
-                    <TableHead>Image</TableHead>
-                    <TableHead>Master</TableHead>
-                    <TableHead>Email</TableHead>
-                    <TableHead>Contact</TableHead>
-                    <TableHead>Services</TableHead>
-                    <TableHead>Actions</TableHead>
+                    <TableHead>{t("adminMasters.tableHeaders.img")}</TableHead>
+                    <TableHead>
+                        {t("adminMasters.tableHeaders.master")}
+                    </TableHead>
+                    <TableHead>
+                        {t("adminMasters.tableHeaders.email")}
+                    </TableHead>
+                    <TableHead>
+                        {t("adminMasters.tableHeaders.contact")}
+                    </TableHead>
+                    <TableHead>
+                        {t("adminMasters.tableHeaders.services")}
+                    </TableHead>
+                    <TableHead>
+                        {t("adminMasters.tableHeaders.actions")}
+                    </TableHead>
                 </TableRow>
             </TableHeader>
 
@@ -87,28 +99,28 @@ export const TableMasters: React.FC<Props> = ({
                             <TableCell>{m.contact}</TableCell>
                             <TableCell>
                                 <div className="flex gap-4">
-                                    {m.services.map((s: string, _s: number) => {
-                                        return (
-                                            <strong
-                                                key={_s}
-                                                className="bg-primary px-4 rounded-full"
-                                            >
-                                                {s}
-                                            </strong>
-                                        );
-                                    })}
+                                    <strong className="bg-primary px-4 rounded-full">
+                                        {m.services[0] === "Lashes" &&
+                                            t("adminMasters.services.lashes")}
+                                        {m.services[0] === "Brows" &&
+                                            t("adminMasters.services.brows")}
+                                        {m.services[0] === "Nails" &&
+                                            t("adminMasters.services.nails")}
+                                    </strong>
                                 </div>
                             </TableCell>
                             <TableCell className="flex py-2 gap-4" id={m.id}>
                                 <Sheet>
                                     <SheetTrigger asChild>
                                         <Button className="shadow-lg">
-                                            Edit
+                                            {t("adminMasters.btn1")}
                                         </Button>
                                     </SheetTrigger>
                                     <SheetContent>
                                         <SheetHeader>
-                                            <SheetTitle>Edit master</SheetTitle>
+                                            <SheetTitle>
+                                                {t("adminMasters.edit")}
+                                            </SheetTitle>
                                         </SheetHeader>
                                         <UpdateMaterForm
                                             id={m.id}
@@ -124,7 +136,7 @@ export const TableMasters: React.FC<Props> = ({
                                     onClick={() => deleteMaster(m.id)}
                                     className="rounded-lg bg-red-600 text-white hover:bg-red-400 shadow-lg"
                                 >
-                                    Delete
+                                    {t("adminMasters.btn2")}
                                 </Button>
                             </TableCell>
                         </TableRow>

@@ -30,6 +30,9 @@ export interface createAppointmentRes {
     phone: string;
     description: string;
     master: { firstName: string; lastName: string };
+    googleUser: any | null;
+    unauthUser: { firstName: string; lastName: string } | null;
+    user: { firstName: string; lastName: string } | null;
 }
 
 export interface getUserAppointmentsRes {

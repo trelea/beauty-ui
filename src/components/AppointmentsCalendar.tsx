@@ -4,6 +4,8 @@ import { Card, CardContent } from "./ui/card";
 import { SetURLSearchParams } from "react-router-dom";
 import { toISO8601DateString } from "@/lib/utils";
 import { Badge } from "./ui/badge";
+import { usei18nUtil } from "@/utils/usei18nUtil";
+import { ro, ru, enUS } from "date-fns/locale";
 
 interface Props {
     date: Date;
@@ -18,14 +20,24 @@ export const AppointmentsCalendar: React.FC<Props> = ({
     setParams,
     service,
 }) => {
+    const { t, lang } = usei18nUtil();
     return (
         <Card className="basis-1/2 shadow-xl">
             <CardContent className="w-full p-0 flex flex-col h-full">
-                <h1 className="font-recoleta text-2xl md:text-3xl font-medium p-4 md:p-6 shadow-md w-full">
-                    Select Date
+                <h1 className="font-celesse text-3xl md:text-4xl font-normal p-4 md:p-6 shadow-md w-full">
+                    {t("appointments.calendar")}
                 </h1>
                 <div className="flex flex-col justify-center items-center gap-6 flex-1 p-5">
                     <Calendar
+                        locale={
+                            lang === "ro"
+                                ? ro
+                                : lang === "ru"
+                                ? ru
+                                : lang === "en"
+                                ? enUS
+                                : undefined
+                        }
                         mode="single"
                         selected={new Date(toISO8601DateString(date as Date))}
                         defaultMonth={

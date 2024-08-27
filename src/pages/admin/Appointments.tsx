@@ -2,16 +2,21 @@ import React from "react";
 import { BaseLoyout } from "../../components/Loyout";
 import { FancySwitch } from "@/components/ui/fancy-switch";
 import { cn } from "@/lib/utils";
-import { useSearchParams } from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
 import { StatusAppointmentsTable } from "@/components/StatusAppointmentsTable";
+import { usei18nUtil } from "@/utils/usei18nUtil";
 
 const Status: string[] = ["Pending", "Approved", "Denied"];
 
+const setValue = (str: string): string => {
+    return `${str.charAt(0).toUpperCase()}${str.slice(1)}`;
+};
+
 export const Appointments: React.FC = () => {
+    const { lang } = useParams();
+    const { setLangUrl } = usei18nUtil();
     const [params, setParams] = useSearchParams();
-    const setValue = (str: string): string => {
-        return `${str.charAt(0).toUpperCase()}${str.slice(1)}`;
-    };
+    React.useEffect(() => setLangUrl(lang as "en" | "ro" | "ru"), [lang]);
 
     return (
         <BaseLoyout adminNavbar={true}>

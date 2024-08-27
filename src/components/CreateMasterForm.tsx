@@ -14,6 +14,7 @@ import { Services } from "@/pages/admin/hooks/useCreateMaster";
 import { UploadThumbanil } from "./UploadThumbnail";
 import { UseFormReturn } from "react-hook-form";
 import { RadioGroup, RadioGroupItem } from "./ui/radio-group";
+import { useTranslation } from "react-i18next";
 
 interface Props {
     form: UseFormReturn<any>;
@@ -21,6 +22,7 @@ interface Props {
 }
 
 export const CreateMasterForm: React.FC<Props> = ({ form, onSubmit }) => {
+    const { t } = useTranslation();
     return (
         <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)}>
@@ -33,7 +35,7 @@ export const CreateMasterForm: React.FC<Props> = ({ form, onSubmit }) => {
                         form={form}
                         name="firstName"
                         type="text"
-                        placeholder="First Name"
+                        placeholder={t("adminMasters.form.firstName")}
                         forAdmin={true}
                     />
 
@@ -42,7 +44,7 @@ export const CreateMasterForm: React.FC<Props> = ({ form, onSubmit }) => {
                         form={form}
                         name="lastName"
                         type="text"
-                        placeholder="Last Name"
+                        placeholder={t("adminMasters.form.lastName")}
                         forAdmin={true}
                     />
 
@@ -51,7 +53,7 @@ export const CreateMasterForm: React.FC<Props> = ({ form, onSubmit }) => {
                         form={form}
                         name="contact"
                         type="tel"
-                        placeholder="Contact"
+                        placeholder={t("adminMasters.form.contact")}
                         forAdmin={true}
                     />
 
@@ -60,7 +62,7 @@ export const CreateMasterForm: React.FC<Props> = ({ form, onSubmit }) => {
                         form={form}
                         name="email"
                         type="email"
-                        placeholder="Email"
+                        placeholder={t("adminMasters.form.email")}
                         forAdmin={true}
                     />
 
@@ -82,7 +84,9 @@ export const CreateMasterForm: React.FC<Props> = ({ form, onSubmit }) => {
                                 <FormControl>
                                     <Textarea
                                         {...field}
-                                        placeholder="Master description..."
+                                        placeholder={t(
+                                            "adminMasters.form.desc"
+                                        )}
                                         className="placeholder:text-[#505050] placeholder:text-base placeholder:font-light bg-transparent border rounded-lg px-6 text-black text-lg font-light focus:border-black focus-visible:border-black focus:ring-0 focus-visible:ring-0 focus:outline-none focus-visible:outline-none h-12 border-zinc-300"
                                     />
                                 </FormControl>
@@ -97,7 +101,9 @@ export const CreateMasterForm: React.FC<Props> = ({ form, onSubmit }) => {
                         name="services"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Services</FormLabel>
+                                <FormLabel>
+                                    {t("adminMasters.form.services.name")}
+                                </FormLabel>
                                 <FormControl>
                                     <RadioGroup
                                         onValueChange={field.onChange}
@@ -105,13 +111,20 @@ export const CreateMasterForm: React.FC<Props> = ({ form, onSubmit }) => {
                                     >
                                         {Services.map((s, _) => {
                                             return (
-                                                <FormItem className="flex items-center space-x-3 space-y-0">
+                                                <FormItem
+                                                    key={_}
+                                                    className="flex items-center space-x-3 space-y-0"
+                                                >
                                                     <FormControl>
                                                         <RadioGroupItem
                                                             value={s}
                                                         />
                                                     </FormControl>
-                                                    <FormLabel>{s}</FormLabel>
+                                                    <FormLabel>
+                                                        {t(
+                                                            `adminMasters.form.services.${s.toLowerCase()}`
+                                                        )}
+                                                    </FormLabel>
                                                 </FormItem>
                                             );
                                         })}
@@ -124,7 +137,7 @@ export const CreateMasterForm: React.FC<Props> = ({ form, onSubmit }) => {
 
                     {/* SUBMIT */}
                     <Button className="w-full" type="submit">
-                        Save
+                        {t("adminMasters.form.save")}
                     </Button>
                 </div>
             </form>

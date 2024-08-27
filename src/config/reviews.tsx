@@ -1,4 +1,5 @@
 import thumb from "../assets/Reviewer.jpg";
+import i18next from "i18next";
 
 export interface review {
     thumb: any;
@@ -6,25 +7,24 @@ export interface review {
     stars: number;
     text: string;
 }
-
 export const lessReviews: review[] = [
     {
         thumb,
         reviewer: "John Doe",
         stars: 4,
-        text: "Great experience! The staff was very friendly and knowledgeable.",
+        text: i18next.t("home.reviews.lr.text1"),
     },
     {
         thumb,
         reviewer: "Jane Smith",
         stars: 5,
-        text: "Absolutely amazing service. My hair has never looked better!",
+        text: i18next.t("home.reviews.lr.text2"),
     },
     {
         thumb,
         reviewer: "Michael Johnson",
         stars: 3,
-        text: "Decent salon, but a bit pricey for what you get.",
+        text: i18next.t("home.reviews.lr.text3"),
     },
 ];
 

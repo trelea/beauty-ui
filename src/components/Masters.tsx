@@ -12,9 +12,11 @@ import Autoplay from "embla-carousel-autoplay";
 // import { _master, masters } from "@/config/masters";
 import { useGetMasterCardsDetails } from "@/pages/index/hooks/useGetMasterCardsDetails";
 import { getMastersCardsDetailsRes } from "@/pages/index/api/index.apis";
+import { usei18nUtil } from "@/utils/usei18nUtil";
 // import { useGetMasters } from "@/pages/admin/hooks/useGetMasters";
 
 export const Masters: React.FC = () => {
+    const { t } = usei18nUtil();
     const { data, error, isError } = useGetMasterCardsDetails();
     // const {
     //     data: masters,
@@ -29,7 +31,7 @@ export const Masters: React.FC = () => {
             {(data?.data.length as number) >= 1 && !error && !isError && (
                 <div className="px-8 mt-10 md:mt-12 xl:mt-14 2xl:mt-24 space-y-6 md:space-y-7 lg:space-y-8 xl:space-y-9 2xl:space-y-12 md:px-11 xl:px-40 2xl:px-56 relative z-40">
                     <h1 className="text-black font-celesse text-[50px] font-normal md:text-[60px] xl:text-[90px]">
-                        Masters
+                        {t("home.masters")}
                     </h1>
                     <Carousel
                         opts={{ align: "start" }}

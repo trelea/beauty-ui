@@ -1,4 +1,5 @@
 import { useGetWorkingHours } from "@/pages/index/hooks/useGetWorkignHours";
+import { usei18nUtil } from "@/utils/usei18nUtil";
 import React from "react";
 import {
     PiInstagramLogoLight,
@@ -9,6 +10,7 @@ import { Link } from "react-router-dom";
 
 export const Contacts = React.forwardRef<HTMLElement>((_, ref) => {
     const { data } = useGetWorkingHours();
+    const { t } = usei18nUtil();
     return (
         <>
             {data?.data !== undefined && (
@@ -20,19 +22,19 @@ export const Contacts = React.forwardRef<HTMLElement>((_, ref) => {
                     <div className="grid grid-cols-2 gap-12 md:flex md:justify-between md:gap-12 2xl:gap-20">
                         <div className="flex flex-col gap-4">
                             <h1 className="font-recoleta text-2xl 2xl:text-3xl text-black font-medium">
-                                Logo
+                                {t("home.contacts.logo")}
                             </h1>
                             <ul className="flex flex-col gap-6 text-black text-lg font-normal">
-                                <li>Appointments</li>
-                                <li>Courses</li>
-                                <li>FAQ</li>
-                                <li>Privacy Policy</li>
+                                <li>{t("home.contacts.appointments")}</li>
+                                <li>{t("home.contacts.courses")}</li>
+                                <li>{t("home.contacts.faq")}</li>
+                                <li>{t("home.contacts.policy")}</li>
                             </ul>
                         </div>
 
                         <div className="flex flex-col gap-4">
                             <h1 className="font-recoleta text-2xl 2xl:text-3xl text-black font-medium">
-                                Contacts
+                                {t("home.contacts.contacts")}
                             </h1>
                             <ul className="flex flex-col gap-6 text-black text-lg font-normal">
                                 <li>
@@ -73,7 +75,7 @@ export const Contacts = React.forwardRef<HTMLElement>((_, ref) => {
 
                         <div className="flex flex-col gap-4 col-span-2">
                             <h1 className="font-recoleta text-2xl 2xl:text-3xl text-black font-medium">
-                                Our Address
+                                {t("home.contacts.addr")}
                             </h1>
                             <ul className="flex flex-col gap-6 text-black text-lg font-normal">
                                 <li>Str. Ismail 56</li>

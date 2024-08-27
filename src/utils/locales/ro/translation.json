@@ -1,0 +1,265 @@
+{
+    "translation": {
+        "lang": "ro",
+
+        "navbar": {
+            "logo": "Logo",
+            "home": "Acasă",
+            "appointments": "Programări",
+            "faq": "Întrebări frecvente",
+            "contacts": "Contacte",
+            "login": "Autentificare",
+            "signup": "Înscriere"
+        },
+
+        "login": {
+            "login": "autentificare",
+            "email": "email",
+            "password": "parolă",
+            "noAcc": "<0>Nu ai un cont încă? <2>Înregistrează-te acum</2></0>"
+        },
+
+        "register": {
+            "register": "Înregistrare",
+            "firstName": "Prenume",
+            "lastName": "Nume de familie",
+            "phone": "Telefon",
+            "email": "Email",
+            "password": "Parolă",
+            "birthDate": "Data nașterii",
+            "alreadyAcc": "<0>Ai deja un cont? <2>Conectează-te acum</2></0>"
+        },
+
+        "otp": {
+            "load": "Încercăm să validăm token-ul...",
+            "invalid": "Token invalid",
+            "error": "<0>Token-ul tău poate fi invalid sau expirat. Te rugăm să te întorci și să încerci să <2>Te înregistrezi din nou.</2></0>",
+            "goBack": "<0>Întoarce-te la conectare? <2>Conectează-te acum</2></0>",
+            "verify": "Verifică-ți emailul",
+            "btn": "verifică"
+        },
+
+        "home": {
+            "hero": {
+                "desc": "Această companie a fost creată pentru a face mai ușor să ai grijă de tine"
+            },
+            "services": {
+                "services": "Servicii",
+                "lashes": "Gene",
+                "brows": "Sprâncene",
+                "nails": "Unghii"
+            },
+            "masters": "Măiestri",
+            "reviews": {
+                "reviews": "Recenzii",
+                "lr": {
+                    "text1": "Experiență grozavă! Personalul a fost foarte prietenos și bine pregătit.",
+                    "text2": "Serviciu absolut uimitor. Părul meu nu a arătat niciodată mai bine!",
+                    "text3": "Salon decent, dar un pic scump pentru ceea ce oferi."
+                },
+                "mr": {
+                    "text1": "Am avut o experiență minunată la acest salon de înfrumusețare. Personalul a fost incredibil de atent și prietenos. Stilista mea, Sarah, a ascultat cu adevărat ce am vrut și mi-a făcut o tunsoare care a depășit așteptările mele.",
+                    "text2": "Acest salon este absolut uimitor! Am venit aici de ani de zile și niciodată nu dezamăgesc. Stilistii nu sunt doar pricepuți, dar și cu adevărat interesați de clienții lor.",
+                    "text3": "Experiența mea la acest salon a fost decentă în general. Tunsoarea pe care am primit-o a fost bună, dar am simțit că a fost puțin cam scumpă pentru ceea ce am obținut.",
+                    "text4": "Nu pot spune suficient de bine despre acest salon! De la momentul în care am intrat, m-am simțit binevenit și apreciat ca client. Stilistii de aici sunt adevărați artiști care își dedică timpul pentru a înțelege obiectivele tale pentru păr și a oferi rezultate care depășesc așteptările. Mediul salonului este luxos dar primitor, iar atenția la detalii este impecabilă. Fie că cauți o tunsoare simplă sau o schimbare completă, acest salon este locul potrivit!",
+                    "text5": "Experiența mea la acest salon a fost dezamăgitoare. În ciuda faptului că am arătat poze și am explicat ce îmi doream, stilista părea grăbită și nu a ascultat cu adevărat cerințele mele. Tunsoarea pe care am primit-o nu a fost ceea ce aveam în minte și am plecat simțindu-mă frustrat. Salonul în sine era curat, dar serviciul general a fost sub așteptările mele. Sper că vor putea îmbunătăți comunicarea și îngrijirea clienților în viitor.",
+                    "text6": "Am avut o experiență grozavă la acest salon! Stilista pe care am văzut-o a fost pricepută și prietenoasă, și mi-a plăcut tunsoarea pe care mi-a făcut-o. Salonul are o atmosferă modernă dar confortabilă, și m-am simțit relaxat pe parcursul vizitei mele. Singurul motiv pentru care nu i-am dat cinci stele este că prețurile erau puțin mai mari decât mă așteptam. În general, aș recomanda cu siguranță acest salon prietenilor și familiei."
+                }
+            },
+            "courses": {
+                "courses": "Cursuri",
+                "lashes": {
+                    "lashes": "Gene",
+                    "desc": "Lorem ipsum durerea stă, bine, fiind parte din elită. Cu toate acestea, este o situație! Sau, care! Este aici și acolo, evitând respingerea problemei."
+                },
+                "brows": {
+                    "brows": "Sprâncene",
+                    "desc": "Lorem ipsum durerea stă, bine, fiind parte din elită. Cu toate acestea, este o situație! Sau, care! Este aici și acolo, evitând respingerea problemei."
+                },
+                "nails": {
+                    "nails": "Unghii",
+                    "desc": "Lorem ipsum durerea stă, bine, fiind parte din elită. Cu toate acestea, este o situație! Sau, care! Este aici și acolo, evitând respingerea problemei."
+                }
+            },
+            "faq": {
+                "faq": "Întrebări frecvente",
+                "item1": {
+                    "title": "Ce servicii oferă salonul dumneavoastră?",
+                    "desc": "Lorem ipsum durerea în sine, stând printre elitele lumii. O respinge sau nu explică nimic? Din respingere, ura minimă oferă o viață, fiind, în mare parte, aproape ca un loc pentru prezentare redus la căutarea oricărui lucru care este cu adevărat dur. Și din dureri, acțiunile sunt adesea respinse. Este adesea explicat prin împărțirea durității și respingerea durerii. Totuși, o viață care este redusă!"
+                },
+                "item2": {
+                    "title": "Cum pot face o programare?",
+                    "desc": "Lorem ipsum durerea în sine, stând printre elitele lumii. O respinge sau nu explică nimic? Din respingere, ura minimă oferă o viață, fiind, în mare parte, aproape ca un loc pentru prezentare redus la căutarea oricărui lucru care este cu adevărat dur. Și din dureri, acțiunile sunt adesea respinse. Este adesea explicat prin împărțirea durității și respingerea durerii. Totuși, o viață care este redusă!"
+                },
+                "item3": {
+                    "title": "Ce măsuri de siguranță luați pentru a asigura siguranța clienților?",
+                    "desc": "Lorem ipsum durerea în sine, stând printre elitele lumii. O respinge sau nu explică nimic? Din respingere, ura minimă oferă o viață, fiind, în mare parte, aproape ca un loc pentru prezentare redus la căutarea oricărui lucru care este cu adevărat dur. Și din dureri, acțiunile sunt adesea respinse. Este adesea explicat prin împărțirea durității și respingerea durerii. Totuși, o viață care este redusă!"
+                },
+                "item4": {
+                    "title": "Ce mărci de cosmetice folosiți pentru îngrijirea părului?",
+                    "desc": "Lorem ipsum durerea în sine, stând printre elitele lumii. O respinge sau nu explică nimic? Din respingere, ura minimă oferă o viață, fiind, în mare parte, aproape ca un loc pentru prezentare redus la căutarea oricărui lucru care este cu adevărat dur. Și din dureri, acțiunile sunt adesea respinse. Este adesea explicat prin împărțirea durității și respingerea durerii. Totuși, o viață care este redusă!"
+                },
+                "item5": {
+                    "title": "Pot anula sau reprogama o programare?",
+                    "desc": "Lorem ipsum durerea în sine, stând printre elitele lumii. O respinge sau nu explică nimic? Din respingere, ura minimă oferă o viață, fiind, în mare parte, aproape ca un loc pentru prezentare redus la căutarea oricărui lucru care este cu adevărat dur. Și din dureri, acțiunile sunt adesea respinse. Este adesea explicat prin împărțirea durității și respingerea durerii. Totuși, o viață care este redusă!"
+                }
+            },
+            "contacts": {
+                "contacts": "Contacte",
+                "logo": "Logo",
+                "addr": "Adresa Noastra",
+                "appointments": "Programări",
+                "courses": "Cursuri",
+                "faq": "Întrebări frecvente",
+                "policy": "Politica de Confidențialitate"
+            }
+        },
+
+        "settings": {
+            "joined": "Înscris Pe",
+            "googleAcc": "Cont Google",
+            "edit": "Editează profilul",
+            "changePwd": "Schimbă parola",
+            "appointments": "Programări",
+            "logout": "Deconectare",
+            "editProfile": {
+                "loading": "Încărcare...",
+                "errTitle": "Ups! Ceva a mers prost.",
+                "errDesc": "A apărut o problemă cu solicitarea dumneavoastră.",
+                "try": "Încearcă din nou...",
+                "firstName": "Prenume",
+                "lastName": "Nume",
+                "phone": "Telefon",
+                "birthDate": "Data nașterii",
+                "btn": "Salvează"
+            },
+            "pwd": {
+                "current": "Parola curentă",
+                "new": "Parola nouă",
+                "confirm": "Confirmă parola",
+                "btn": "salvează"
+            },
+            "appointmentsUser": {
+                "load": " Încărcare...",
+                "errTitle": "Ups! Ceva a mers prost.",
+                "errDesc": "A apărut o problemă cu solicitarea dumneavoastră.",
+                "try": "Încearcă din nou...",
+                "tableHeader": {
+                    "service": "Serviciu",
+                    "dt": "Dată/Ora",
+                    "master": "Maestru",
+                    "status": "Stare"
+                }
+            }
+        },
+
+        "appointments": {
+            "services": {
+                "lashes": "Gene",
+                "nails": "Unghii",
+                "brows": "Sprincene"
+            },
+            "calendar": "Selectează Data",
+            "availableMasters": "Maieștri Disponibili",
+            "signup": "Înscrie-te",
+            "sessions": "ședințe disponibile pe",
+            "form": {
+                "master": "Maestru:",
+                "date": "Data:",
+                "time": "Ora:",
+                "service": "Serviciu:",
+                "select": "Selectează Ora",
+                "start": "Începe la",
+                "phone": "Introdu numărul tău de telefon...",
+                "firstName": "Prenume",
+                "lastName": "Nume",
+                "email": "Email",
+                "birthDate": "Anul nașterii",
+                "desc": "Descriere opțională pentru maestru...",
+                "btn": "Înscrie-te"
+            }
+        },
+
+        "googleSuccess": "Autentificare reușită cu Google.",
+        "googleFail": "Autentificare eșuată cu Google.",
+
+        "adminAuth": {
+            "user": "Utilizator",
+            "pwd": "Parolă"
+        },
+
+        "adminNav": {
+            "appointments": "Programări",
+            "masters": "Maieștri",
+            "logout": "Deconectare"
+        },
+
+        "adminAppointments": {
+            "status": {
+                "pending": "În așteptare",
+                "approved": "Aprobat",
+                "denied": "Respinse"
+            },
+            "load": "Încărcare...",
+            "errTitle": "Ups! Ceva a mers prost.",
+            "errDesc": "A apărut o problemă cu solicitarea dumneavoastră.",
+            "try": "Încercați din nou...",
+            "tableHeader": {
+                "service": "Serviciu",
+                "dt": "Dată/Ora",
+                "client": "Client",
+                "contact": "Contact",
+                "desc": "Descriere",
+                "master": "Maestru",
+                "status": "Stare",
+                "actions": "Acțiuni"
+            },
+            "btns": {
+                "approve": "Aprobați",
+                "deny": "Respingeți"
+            }
+        },
+
+        "adminMasters": {
+            "search": "Caută maestru...",
+            "createBtn": "Creează Maestru",
+            "load": "Încărcare...",
+            "tableHeaders": {
+                "img": "Imagine",
+                "master": "Maestru",
+                "email": "Email",
+                "contact": "Contact",
+                "services": "Servicii",
+                "actions": "Acțiuni"
+            },
+            "services": {
+                "lashes": "Gene",
+                "nails": "Unghii",
+                "brows": "Sprâncene"
+            },
+            "btn1": "Editează",
+            "btn2": "Șterge",
+            "edit": "Editează maestrul",
+            "form": {
+                "dropImg": "Aruncați imaginea!",
+                "dragImg": "Faceți clic aici sau trageți o imagine pentru a o încărca",
+                "rejectImg": "Imaginea trebuie să fie mai mică de 1 MB și de tip png, jpg sau jpeg",
+                "firstName": "Prenume",
+                "lastName": "Nume",
+                "contact": "Contact",
+                "email": "Email",
+                "decs": "Descriere maestru...",
+                "services": {
+                    "name": "servicii",
+                    "lashes": "Gene",
+                    "brows": "Sprâncene",
+                    "nails": "Unghii"
+                },
+                "save": "Salvează",
+                "update": "Actualizează"
+            }
+        },
+
+        "notFound": "<0>Pagina nu a fost găsită. <2>Întoarce-te acasă.</2></0>"
+    }
+}

@@ -5,13 +5,22 @@ import { BaseLoyout } from "@/components/Loyout";
 import { NailsAppointments } from "@/components/NailsAppointments";
 import { toISO8601DateString } from "@/lib/utils";
 import { useUserStore } from "@/store/store";
+import { usei18nUtil } from "@/utils/usei18nUtil";
 import React from "react";
-import { ScrollRestoration, useSearchParams } from "react-router-dom";
+import {
+    ScrollRestoration,
+    useParams,
+    useSearchParams,
+} from "react-router-dom";
 
 export const Appointments: React.FC = () => {
     const auth = useUserStore((state) => state.user);
     const [params, setParams] = useSearchParams();
     const contactsRef = React.useRef<HTMLElement>(null);
+
+    const { lang } = useParams();
+    const { setLangUrl, t } = usei18nUtil();
+    React.useEffect(() => setLangUrl(lang as "en" | "ro" | "ru"), [lang]);
 
     React.useEffect(() => {
         if (params.get("_ref_into") === "contacts")
@@ -22,24 +31,6 @@ export const Appointments: React.FC = () => {
     return (
         <BaseLoyout>
             <div className="px-8 md:px-11 xl:px-40 2xl:px-56 relative z-40 pt-32 2xl:pt-40 pb-10">
-                {/* <div className="flex flex-col gap-2 md:gap-4 xl:flex-row xl:gap-6 mb-9 md:mb-16 xl:mb-24 2xl:mb-44">
-                    <div className="flex flex-col gap-2 md:gap-4 xl:gap-6">
-                        <UserCard user={user} />
-                        <SettingsOpts
-                            params={params}
-                            setParams={setParams}
-                            user={user}
-                        />
-                    </div>
-                    <div className="xl:flex xl:flex-grow">
-                        {params.get("_edit_profile") === "true" && (
-                            <EditProfile setLogin={setLogin} />
-                        )}
-                        {params.get("_change_password") === "true" && (
-                            <ChangePassword />
-                        )}
-                    </div>
-                </div> */}
                 <ul className="font-recoleta font-normal text-2xl flex justify-between md:justify-start md:gap-14">
                     <li
                         className={`${
@@ -53,7 +44,7 @@ export const Appointments: React.FC = () => {
                             })
                         }
                     >
-                        Lashes
+                        {t("appointments.services.lashes")}
                     </li>
                     <li
                         className={`${
@@ -67,7 +58,7 @@ export const Appointments: React.FC = () => {
                             })
                         }
                     >
-                        Nails
+                        {t("appointments.services.nails")}
                     </li>
                     <li
                         className={`${
@@ -81,7 +72,7 @@ export const Appointments: React.FC = () => {
                             })
                         }
                     >
-                        Brows
+                        {t("appointments.services.brows")}
                     </li>
                 </ul>
 
