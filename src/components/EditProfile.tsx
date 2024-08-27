@@ -6,6 +6,7 @@ import { SiReactquery } from "react-icons/si";
 import { Form } from "./ui/form";
 import { RegistragionField } from "./RegistrationField";
 import { useUpdateProfile } from "@/pages/settings/hooks/useUpdateProfile";
+import { useTranslation } from "react-i18next";
 
 interface Props {
     setLogin: (data: any) => void;
@@ -14,6 +15,7 @@ interface Props {
 export const EditProfile: React.FC<Props> = ({ setLogin }) => {
     const { data, error, isError, isFetching, isLoading } = useGetProfile();
     const { form, onSubmit } = useUpdateProfile(data?.data, setLogin);
+    const { t } = useTranslation();
 
     if (isFetching || isLoading)
         return (
@@ -21,7 +23,7 @@ export const EditProfile: React.FC<Props> = ({ setLogin }) => {
                 <CardContent className="flex flex-col justify-center items-center h-full gap-4 p-4">
                     <SiReactquery className="h-12 w-12 md:w-16 md:h-12 xl:h-20 xl:w-20 aspect-square animate-spin" />
                     <h1 className="text-sm md:text-base xl:text-lg font-medium">
-                        Loading...
+                        {t("settings.editProfile.loading")}
                     </h1>
                 </CardContent>
             </Card>
@@ -33,16 +35,16 @@ export const EditProfile: React.FC<Props> = ({ setLogin }) => {
                 <CardContent className="flex justify-center items-center h-full p-4">
                     <div className="flex flex-col justify-center items-center bg-red-600 text-white p-3 px-6 lg:p-4 lg:px-8 2xl:p-6 2xl:px-12 shadow-2xl rounded-xl">
                         <h1 className="text-sm font-medium text-center md:text-base xl:text-lg">
-                            Uh oh! Something went wrong.
+                            {t("settings.editProfile.errTitle")}
                         </h1>
                         <p className="text-xs text-center md:text-sm xl:text-base">
-                            There was a problem with your request.
+                            {t("settings.editProfile.errDesc")}
                         </p>
                         <Button
                             className="mt-3 bg-transparent hover:bg-red-500 border border-white text-white text-sm"
                             onClick={() => window.location.reload()}
                         >
-                            Try again..
+                            {t("settings.editProfile.try")}
                         </Button>
                     </div>
                 </CardContent>
@@ -63,7 +65,9 @@ export const EditProfile: React.FC<Props> = ({ setLogin }) => {
                                 form={form}
                                 name="firstName"
                                 type="text"
-                                placeholder="First Name"
+                                placeholder={t(
+                                    "settings.editProfile.firstName"
+                                )}
                                 forSettings={true}
                                 value={data?.data.firstName}
                             />
@@ -73,7 +77,7 @@ export const EditProfile: React.FC<Props> = ({ setLogin }) => {
                                 form={form}
                                 name="lastName"
                                 type="text"
-                                placeholder="Last Name"
+                                placeholder={t("settings.editProfile.lastName")}
                                 forSettings={true}
                                 value={data?.data.lastName}
                             />
@@ -83,7 +87,7 @@ export const EditProfile: React.FC<Props> = ({ setLogin }) => {
                                 form={form}
                                 name="phone"
                                 type="tel"
-                                placeholder="Phone"
+                                placeholder={t("settings.editProfile.phone")}
                                 forSettings={true}
                                 value={data?.data.phone}
                             />
@@ -109,7 +113,9 @@ export const EditProfile: React.FC<Props> = ({ setLogin }) => {
                                 form={form}
                                 name="birthDate"
                                 type="date"
-                                placeholder="Birth date"
+                                placeholder={t(
+                                    "settings.editProfile.birthDate"
+                                )}
                                 forSettings={true}
                                 value={data?.data.birthDate}
                             />
@@ -119,7 +125,7 @@ export const EditProfile: React.FC<Props> = ({ setLogin }) => {
                                 disabled={isLoading || isFetching}
                                 className="w-full bg-primary text-center text-[#505050] text-lg font-normal h-12 border border-[#A7B15A]"
                             >
-                                Save
+                                {t("settings.editProfile.btn")}
                             </Button>
                         </div>
                     </form>

@@ -8,6 +8,7 @@ import { Button } from "./ui/button";
 import { useUserStore } from "@/store/store";
 import { useLogout } from "@/pages/login/hooks/useLogout";
 import { FaGoogle } from "react-icons/fa";
+import { useTranslation } from "react-i18next";
 
 interface Props {
     params: URLSearchParams;
@@ -18,6 +19,7 @@ interface Props {
 export const SettingsOpts: React.FC<Props> = ({ params, setParams, user }) => {
     const { setLogout } = useUserStore((state) => state);
     const { logout } = useLogout(setLogout);
+    const { t } = useTranslation();
     return (
         <Card className="shadow-lg rounded-xl h-full">
             <CardContent className="p-2 md:p-3 xl:p-4 m-0">
@@ -32,7 +34,7 @@ export const SettingsOpts: React.FC<Props> = ({ params, setParams, user }) => {
                                 }`}
                             >
                                 <FaGoogle className="aspect-square" />
-                                <h1>Google Account</h1>
+                                <h1>{t("settings.googleAcc")}</h1>
                             </li>
                         </Link>
                     )}
@@ -47,7 +49,7 @@ export const SettingsOpts: React.FC<Props> = ({ params, setParams, user }) => {
                             }`}
                         >
                             <GrUserSettings className="aspect-square" />
-                            <h1>Edit profile</h1>
+                            <h1>{t("settings.edit")}</h1>
                         </li>
                     )}
 
@@ -63,7 +65,7 @@ export const SettingsOpts: React.FC<Props> = ({ params, setParams, user }) => {
                             }`}
                         >
                             <RiLockPasswordLine className="aspect-square" />
-                            <h1>Change password</h1>
+                            <h1>{t("settings.changePwd")}</h1>
                         </li>
                     )}
 
@@ -87,7 +89,7 @@ export const SettingsOpts: React.FC<Props> = ({ params, setParams, user }) => {
                         }`}
                     >
                         <RiCalendarScheduleLine className="aspect-square" />
-                        <h1>Appointments</h1>
+                        <h1>{t("settings.appointments")}</h1>
                     </li>
 
                     <Button
@@ -95,7 +97,7 @@ export const SettingsOpts: React.FC<Props> = ({ params, setParams, user }) => {
                         className="bg-transparent hover:bg-zinc-300 flex justify-center col-span-2 md:col-span-4 gap-4 p-2 items-center font-medium text-sm md:text-base lg:text-lg xl:text-xl 2xl:text-xl rounded-lg py-0 m-0 hover:shadow-md xl:py-7 xl:justify-start xl:px-4"
                     >
                         <MdLogout className="aspect-square" />
-                        Logout
+                        {t("settings.logout")}
                     </Button>
                 </ul>
             </CardContent>

@@ -19,6 +19,7 @@ import { PiUserCircleFill } from "react-icons/pi";
 import { Badge } from "./ui/badge";
 import { useApproveAppointment } from "@/pages/admin/hooks/useApproveAppointment";
 import { useDenyAppointment } from "@/pages/admin/hooks/useDenyAppointment";
+import { useTranslation } from "react-i18next";
 
 interface Props {
     status: "pending" | "approved" | "denied";
@@ -28,6 +29,7 @@ export const StatusAppointmentsTable: React.FC<Props> = ({ status }) => {
     const { appointments, error, loading } = useGetAppointmentsByStatus({
         status,
     });
+    const { t } = useTranslation();
     const { approveAppointment } = useApproveAppointment();
     const { denyAppointment } = useDenyAppointment();
 
@@ -37,7 +39,7 @@ export const StatusAppointmentsTable: React.FC<Props> = ({ status }) => {
                 <CardContent className="h-full w-full flex flex-col justify-center items-center">
                     <SiReactquery className="h-12 w-12 md:w-16 md:h-12 xl:h-20 xl:w-20 aspect-square animate-spin" />
                     <h1 className="text-sm md:text-base xl:text-lg font-medium">
-                        Loading...
+                        {t("adminAppointments.load")}
                     </h1>
                 </CardContent>
             </Card>
@@ -49,16 +51,16 @@ export const StatusAppointmentsTable: React.FC<Props> = ({ status }) => {
                 <CardContent className="h-full w-full flex flex-col justify-center items-center">
                     <div className="flex flex-col justify-center items-center bg-red-600 text-white p-3 px-6 lg:p-4 lg:px-8 2xl:p-6 2xl:px-12 shadow-2xl rounded-xl">
                         <h1 className="text-sm font-medium text-center md:text-base xl:text-lg">
-                            Uh oh! Something went wrong.
+                            {t("adminAppointments.errTitle")}
                         </h1>
                         <p className="text-xs text-center md:text-sm xl:text-base">
-                            There was a problem with your request.
+                            {t("adminAppointments.errDesc")}
                         </p>
                         <Button
                             className="mt-3 bg-transparent hover:bg-red-500 border border-white text-white text-sm"
                             onClick={() => window.location.reload()}
                         >
-                            Try again..
+                            {t("adminAppointments.try")}
                         </Button>
                     </div>
                 </CardContent>
@@ -72,15 +74,33 @@ export const StatusAppointmentsTable: React.FC<Props> = ({ status }) => {
                     <Table>
                         <TableHeader className="shadow-md bg-secondary sticky top-0 z-50">
                             <TableRow className="text-xs lg:text-lg">
-                                <TableHead>Service</TableHead>
-                                <TableHead>Date/Time</TableHead>
-                                <TableHead>Client</TableHead>
-                                <TableHead>Contact</TableHead>
-                                <TableHead>Description</TableHead>
-                                <TableHead>Master</TableHead>
-                                <TableHead>Status</TableHead>
+                                <TableHead>
+                                    {t("adminAppointments.tableHeader.service")}
+                                </TableHead>
+                                <TableHead>
+                                    {t("adminAppointments.tableHeader.dt")}
+                                </TableHead>
+                                <TableHead>
+                                    {t("adminAppointments.tableHeader.client")}
+                                </TableHead>
+                                <TableHead>
+                                    {t("adminAppointments.tableHeader.contact")}
+                                </TableHead>
+                                <TableHead>
+                                    {t("adminAppointments.tableHeader.desc")}
+                                </TableHead>
+                                <TableHead>
+                                    {t("adminAppointments.tableHeader.master")}
+                                </TableHead>
+                                <TableHead>
+                                    {t("adminAppointments.tableHeader.status")}
+                                </TableHead>
                                 {status === "pending" && (
-                                    <TableHead>Actions</TableHead>
+                                    <TableHead>
+                                        {t(
+                                            "adminAppointments.tableHeader.actions"
+                                        )}
+                                    </TableHead>
                                 )}
                             </TableRow>
                         </TableHeader>
@@ -184,7 +204,21 @@ export const StatusAppointmentsTable: React.FC<Props> = ({ status }) => {
                                                         "bg-red-500 hover:bg-red-500"
                                                     } text-white text-xs`}
                                                 >
-                                                    {appointment.status}
+                                                    {appointment.status ===
+                                                        "PENDING" &&
+                                                        t(
+                                                            "adminAppointments.status.pending"
+                                                        )}
+                                                    {appointment.status ===
+                                                        "APPROVED" &&
+                                                        t(
+                                                            "adminAppointments.status.approved"
+                                                        )}
+                                                    {appointment.status ===
+                                                        "DENIED" &&
+                                                        t(
+                                                            "adminAppointments.status.denied"
+                                                        )}
                                                 </Badge>
                                             </TableCell>
                                             {status === "pending" && (
@@ -200,7 +234,9 @@ export const StatusAppointmentsTable: React.FC<Props> = ({ status }) => {
                                                             })
                                                         }
                                                     >
-                                                        Approve
+                                                        {t(
+                                                            "adminAppointments.btns.approve"
+                                                        )}
                                                     </Button>
                                                     <Button
                                                         variant={"outline"}
@@ -213,7 +249,9 @@ export const StatusAppointmentsTable: React.FC<Props> = ({ status }) => {
                                                             })
                                                         }
                                                     >
-                                                        Deny
+                                                        {t(
+                                                            "adminAppointments.btns.deny"
+                                                        )}
                                                     </Button>
                                                 </TableCell>
                                             )}

@@ -6,6 +6,8 @@ import { Button } from "./ui/button";
 import { Link } from "react-router-dom";
 import { SlSocialGoogle } from "react-icons/sl";
 import { useSigninGoogle } from "@/hooks/useSignInGoogle";
+import { Trans } from "react-i18next";
+import { usei18nUtil } from "@/utils/usei18nUtil";
 
 interface Props {
     form: UseFormReturn<any>;
@@ -15,11 +17,12 @@ interface Props {
 export const LoginForm: React.FC<Props> = ({ form, onSubmit }) => {
     // GOOGLE SIGNIN
     const { signinWithGoogle } = useSigninGoogle();
+    const { t, lang } = usei18nUtil();
 
     return (
         <div className="container bg-white rounded-lg p-6 shadow-lg max-sm:mx-4 sm:w-[550px]">
-            <h1 className="text-black font-recoleta text-4xl font-normal text-center mb-6">
-                Login
+            <h1 className="text-black font-celesse text-5xl font-normal text-center mb-6">
+                {t("login.login")}
             </h1>
             <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)}>
@@ -29,7 +32,7 @@ export const LoginForm: React.FC<Props> = ({ form, onSubmit }) => {
                             form={form}
                             name="email"
                             type="email"
-                            placeholder="Email"
+                            placeholder={t("login.email")}
                         />
 
                         {/* PASSWORD */}
@@ -37,12 +40,12 @@ export const LoginForm: React.FC<Props> = ({ form, onSubmit }) => {
                             form={form}
                             name="password"
                             type="password"
-                            placeholder="Password"
+                            placeholder={t("login.password")}
                         />
 
                         {/* SUBMIT */}
                         <Button className="w-full bg-primary text-center text-[#505050] text-lg font-normal h-12 border border-[#A7B15A]">
-                            Login
+                            {t("login.email")}
                         </Button>
                     </div>
                 </form>
@@ -55,12 +58,19 @@ export const LoginForm: React.FC<Props> = ({ form, onSubmit }) => {
                     />
                 </div>
             </div>
-            <h1 className="text-center mt-14">
-                Not have an account yet?{" "}
-                <Link to={"/register"} preventScrollReset className="underline">
-                    Register now
-                </Link>
-            </h1>
+
+            <Trans i18nKey={"login.noAcc"}>
+                <h1 className="text-center mt-14">
+                    Not have an account yet?{" "}
+                    <Link
+                        to={`/${lang}/register`}
+                        preventScrollReset
+                        className="underline"
+                    >
+                        Register now
+                    </Link>
+                </h1>
+            </Trans>
         </div>
     );
 };

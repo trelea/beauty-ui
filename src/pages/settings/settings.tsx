@@ -2,23 +2,36 @@ import { Contacts } from "@/components/Contacts";
 import { BaseLoyout } from "@/components/Loyout";
 import { useUserStore } from "@/store/store";
 import React from "react";
-import { ScrollRestoration, useSearchParams } from "react-router-dom";
+import {
+    ScrollRestoration,
+    useParams,
+    useSearchParams,
+} from "react-router-dom";
 import { UserCard } from "@/components/UserCard";
 import { SettingsOpts } from "@/components/SettingsOpts";
 import { EditProfile } from "@/components/EditProfile";
 import { ChangePassword } from "@/components/ChangePassword";
 import { UserAppointments } from "@/components/UserAppointments";
+import { usei18nUtil } from "@/utils/usei18nUtil";
 
 export const Settings: React.FC = () => {
     const { user, setLogin } = useUserStore((state) => state);
     const [params, setParams] = useSearchParams();
     const contactsRef = React.useRef<HTMLElement>(null);
 
+    const { lang } = useParams();
+    const { setLangUrl } = usei18nUtil();
+    React.useEffect(() => setLangUrl(lang as "en" | "ro" | "ru"), [lang]);
+
     React.useEffect(() => {
+        if (params.get("_ref_into") === "faq")
+            window.location.pathname = `/${lang}`;
         if (params.get("_ref_into") === "contacts")
-            return contactsRef.current?.scrollIntoView({ behavior: "smooth" });
-        if (params.get("_ref_into") === "faq") window.location.pathname = "/";
-    }, [params]);
+            contactsRef.current?.scrollIntoView({
+                block: "center",
+                behavior: "smooth",
+            });
+    }, [params.get("_ref_into")]);
 
     return (
         <BaseLoyout>

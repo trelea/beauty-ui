@@ -9,6 +9,8 @@ import { Button } from "./ui/button";
 import { format } from "date-fns";
 import { Calendar } from "./ui/calendar";
 import { CiCalendar } from "react-icons/ci";
+import { usei18nUtil } from "@/utils/usei18nUtil";
+import { ro, ru, enUS } from "date-fns/locale";
 
 interface Props {
     form: UseFormReturn<any>;
@@ -30,6 +32,7 @@ export const RegistragionField: React.FC<Props> = ({
     forAdmin,
 }) => {
     const [hide, setHide] = React.useState<boolean>(true);
+    const { t, lang } = usei18nUtil();
     return (
         <div className="w-full">
             <FormField
@@ -60,7 +63,7 @@ export const RegistragionField: React.FC<Props> = ({
                                                 format(field.value, "PPP")
                                             ) : (
                                                 <span className="text-[#505050]">
-                                                    Year of birth
+                                                    {t("register.birthDate")}
                                                 </span>
                                             )}
 
@@ -70,6 +73,15 @@ export const RegistragionField: React.FC<Props> = ({
                                 </PopoverTrigger>
                                 <PopoverContent className="w-fit">
                                     <Calendar
+                                        locale={
+                                            lang === "ro"
+                                                ? ro
+                                                : lang === "ru"
+                                                ? ru
+                                                : lang === "en"
+                                                ? enUS
+                                                : undefined
+                                        }
                                         mode="single"
                                         captionLayout="dropdown-buttons"
                                         selected={field.value}

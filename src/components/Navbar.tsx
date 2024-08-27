@@ -13,34 +13,39 @@ import {
 } from "./ui/dropdown-menu";
 import { useLogout } from "@/pages/login/hooks/useLogout";
 import { toISO8601DateString } from "@/lib/utils";
+import { SelectLang } from "./SelectLang";
+import { usei18nUtil } from "@/utils/usei18nUtil";
 
 export const Navbar: React.FC = () => {
     const [_, setQuery] = useSearchParams();
     const { user, setLogout } = useUserStore((state) => state);
     const { logout } = useLogout(setLogout);
+    const { lang, t } = usei18nUtil();
 
     return (
         <div className="fixed z-50 top-10 px-6 md:px-11 xl:px-40 2xl:px-56 w-full">
             <nav className="w-full bg-white rounded-full px-6 py-3 flex justify-between items-center shadow-xl">
-                <Link to={"/"}>
-                    <h1 className="font-medium text-xl lg:text-2xl">Logo</h1>
+                <Link to={`/${lang}`}>
+                    <h1 className="font-medium text-xl lg:text-2xl">
+                        {t("navbar.logo")}
+                    </h1>
                 </Link>
 
                 <div className="flex items-center gap-6">
                     <ul className="hidden lg:flex gap-6 text-lg font-normal text-black items-center">
                         <li className="hover:underline decoration-black decoration-2 hover:cursor-pointer">
-                            <Link to={"/"} className="w-full">
-                                Home
+                            <Link to={`/${lang}`} className="w-full">
+                                {t("navbar.home")}
                             </Link>
                         </li>
                         <li className="hover:underline decoration-black decoration-2 hover:cursor-pointer">
                             <Link
-                                to={`/appointments?lashes=true&_check_date=${toISO8601DateString(
+                                to={`/${lang}/appointments?lashes=true&_check_date=${toISO8601DateString(
                                     new Date()
                                 )}`}
                                 className="w-full"
                             >
-                                Appointments
+                                {t("navbar.appointments")}
                             </Link>
                         </li>
                         {/* <li className="hover:underline decoration-black decoration-2 hover:cursor-pointer">
@@ -50,7 +55,7 @@ export const Navbar: React.FC = () => {
                             onClick={() => setQuery({ _ref_into: "faq" })}
                             className="hover:underline decoration-black decoration-2 hover:cursor-pointer"
                         >
-                            FAQ
+                            {t("navbar.faq")}
                         </li>
                         {/* <li className="hover:underline decoration-black decoration-2 hover:cursor-pointer">
                             Privacy Policy
@@ -59,7 +64,7 @@ export const Navbar: React.FC = () => {
                             onClick={() => setQuery({ _ref_into: "contacts" })}
                             className="hover:underline decoration-black decoration-2 hover:cursor-pointer"
                         >
-                            Contacts
+                            {t("navbar.contacts")}
                         </li>
                     </ul>
 
@@ -72,15 +77,17 @@ export const Navbar: React.FC = () => {
                         <DropdownMenuContent className="mt-4 mr-6 bg-white rounded-2xl border-none shadow-2xl px-4 py-4">
                             <DropdownMenuGroup className="flex flex-col gap-2 items-center">
                                 <DropdownMenuItem className="focus:bg-transparent hover:underline decoration-black decoration-2 hover:cursor-pointer text-center text-lg font-normal">
-                                    <Link to={"/home"}>Home</Link>
+                                    <Link to={`/${lang}/home`}>
+                                        {t("navbar.home")}
+                                    </Link>
                                 </DropdownMenuItem>
                                 <DropdownMenuItem className="focus:bg-transparent hover:underline decoration-black decoration-2 hover:cursor-pointer text-center text-lg font-normal">
                                     <Link
-                                        to={`/appointments?lashes=true&_check_date=${toISO8601DateString(
+                                        to={`/${lang}/appointments?lashes=true&_check_date=${toISO8601DateString(
                                             new Date()
                                         )}`}
                                     >
-                                        Appointments
+                                        {t("navbar.appointments")}
                                     </Link>
                                 </DropdownMenuItem>
                                 {/* <DropdownMenuItem className="focus:bg-transparent hover:underline decoration-black decoration-2 hover:cursor-pointer text-center text-lg font-normal">
@@ -92,7 +99,7 @@ export const Navbar: React.FC = () => {
                                     }
                                     className="focus:bg-transparent hover:underline decoration-black decoration-2 hover:cursor-pointer text-center text-lg font-normal"
                                 >
-                                    FAQ
+                                    {t("navbar.faq")}
                                 </DropdownMenuItem>
                                 {/* <DropdownMenuItem className="focus:bg-transparent hover:underline decoration-black decoration-2 hover:cursor-pointer text-center text-lg font-normal">
                                 Privacy Policy
@@ -103,16 +110,21 @@ export const Navbar: React.FC = () => {
                                     }
                                     className="focus:bg-transparent hover:underline decoration-black decoration-2 hover:cursor-pointer text-center text-lg font-normal"
                                 >
-                                    Contacts
+                                    {t("navbar.contacts")}
                                 </DropdownMenuItem>
+
+                                <DropdownMenuItem className="focus:bg-transparent">
+                                    <SelectLang />
+                                </DropdownMenuItem>
+
                                 {user ? (
                                     <>
                                         <DropdownMenuItem className="focus:bg-transparent flex gap-4">
                                             <Link
                                                 to={
                                                     user?.provider === "google"
-                                                        ? "/settings?_appointments=true"
-                                                        : "/settings?_edit_profile=true"
+                                                        ? `/${lang}/settings?_appointments=true`
+                                                        : `/${lang}/settings?_edit_profile=true`
                                                 }
                                             >
                                                 <CiUser className="h-8 w-8 aspect-square p-1 rounded-full hover:bg-secondary" />
@@ -128,20 +140,20 @@ export const Navbar: React.FC = () => {
                                         <DropdownMenuItem className="w-full focus:bg-transparent flex gap-4">
                                             <Link
                                                 className="w-full"
-                                                to={"/login"}
+                                                to={`/${lang}/login`}
                                             >
                                                 <Button className="rounded-xl bg-secondary w-full">
-                                                    LogIn
+                                                    {t("navbar.login")}
                                                 </Button>
                                             </Link>
                                         </DropdownMenuItem>
                                         <DropdownMenuItem className="w-full focus:bg-transparent flex gap-4">
                                             <Link
                                                 className="w-full"
-                                                to={"/register"}
+                                                to={`/${lang}/register`}
                                             >
                                                 <Button className="rounded-xl bg-secondary w-full">
-                                                    SignUp
+                                                    {t("navbar.signup")}
                                                 </Button>
                                             </Link>
                                         </DropdownMenuItem>
@@ -152,12 +164,13 @@ export const Navbar: React.FC = () => {
                     </DropdownMenu>
 
                     {user ? (
-                        <div className="hidden lg:flex gap-4">
+                        <div className="hidden lg:flex gap-4 items-center">
+                            <SelectLang />
                             <Link
                                 to={
                                     user?.provider === "google"
-                                        ? "/settings?_appointments=true"
-                                        : "/settings?_edit_profile=true"
+                                        ? `/${lang}/settings?_appointments=true`
+                                        : `/${lang}/settings?_edit_profile=true`
                                 }
                             >
                                 <CiUser className="h-8 w-8 aspect-square p-1 rounded-full hover:bg-secondary" />
@@ -169,15 +182,16 @@ export const Navbar: React.FC = () => {
                             />
                         </div>
                     ) : (
-                        <div className="hidden lg:flex gap-4">
-                            <Link to={"/login"}>
+                        <div className="hidden lg:flex gap-4 items-center">
+                            <SelectLang />
+                            <Link to={`/${lang}/login`}>
                                 <Button className="rounded-3xl bg-secondary">
-                                    LogIn
+                                    {t("navbar.login")}
                                 </Button>
                             </Link>
-                            <Link to={"/register"}>
+                            <Link to={`/${lang}/register`}>
                                 <Button className="rounded-3xl bg-secondary">
-                                    SignUp
+                                    {t("navbar.signup")}
                                 </Button>
                             </Link>
                         </div>

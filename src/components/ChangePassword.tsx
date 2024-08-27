@@ -4,9 +4,11 @@ import { Form } from "./ui/form";
 import { Button } from "./ui/button";
 import { RegistragionField } from "./RegistrationField";
 import { useChangePassword } from "@/pages/settings/hooks/useChangePassword";
+import { useTranslation } from "react-i18next";
 
 export const ChangePassword: React.FC = () => {
     const { form, onSubmit } = useChangePassword();
+    const { t } = useTranslation();
     return (
         <Card className="grow shadow-lg rounded-xl">
             <CardContent className="flex justify-center items-center w-full h-full pt-6 md:py-14 xl:p-0">
@@ -21,7 +23,7 @@ export const ChangePassword: React.FC = () => {
                                 form={form}
                                 name="password"
                                 type="password"
-                                placeholder="Current password"
+                                placeholder={t("settings.pwd.current")}
                                 forSettings={true}
                             />
 
@@ -30,7 +32,7 @@ export const ChangePassword: React.FC = () => {
                                 form={form}
                                 name="new_password"
                                 type="password"
-                                placeholder="New password"
+                                placeholder={t("settings.pwd.new")}
                                 forSettings={true}
                             />
 
@@ -39,13 +41,13 @@ export const ChangePassword: React.FC = () => {
                                 form={form}
                                 name="confirm_password"
                                 type="password"
-                                placeholder="Confirm password"
+                                placeholder={t("settings.pwd.confirm")}
                                 forSettings={true}
                             />
 
                             {/* SUBMIT */}
                             <Button className="w-full bg-primary text-center text-[#505050] text-lg font-normal h-12 border border-[#A7B15A]">
-                                Save
+                                {t("settings.pwd.btn")}
                             </Button>
                         </div>
                     </form>

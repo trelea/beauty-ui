@@ -51,7 +51,7 @@ export const ReviewCard: React.FC<Props> = ({
                         })}
                 </div>
             </CardHeader>
-            <CardContent className="p-0 m-0 text-lg font-recoleta font-normal lg:text-xl 2xl:text-2xl">
+            <CardContent className="p-0 m-0 text-lg font-normal lg:text-xl 2xl:text-2xl">
                 {text}
             </CardContent>
         </Card>

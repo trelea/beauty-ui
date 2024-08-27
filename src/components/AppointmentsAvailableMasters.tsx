@@ -33,6 +33,8 @@ import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
 import { CiCalendar } from "react-icons/ci";
 import { Calendar } from "./ui/calendar";
 import { format } from "date-fns";
+import { ro, ru, enUS } from "date-fns/locale";
+import { usei18nUtil } from "@/utils/usei18nUtil";
 
 interface Props {
     data?: AxiosResponse<getAvailableRes[]>;
@@ -55,11 +57,12 @@ export const AppointmentsAvailableMasters: React.FC<Props> = ({
     auth,
 }) => {
     const [t, setT] = React.useState<string | null>(null);
+    const { t: _t, lang } = usei18nUtil();
     return (
         <Card className="basis-1/2 shadow-xl">
             <CardContent className="p-0">
-                <h1 className="font-recoleta text-2xl md:text-3xl font-medium p-4 md:p-6 shadow-md w-full">
-                    Available Masters
+                <h1 className="font-celesse text-3xl md:text-4xl font-normal p-4 md:p-6 shadow-md w-full">
+                    {_t("appointments.availableMasters")}
                 </h1>
                 <ScrollArea className="h-[500px] px-2 py-1">
                     <Table>
@@ -99,7 +102,9 @@ export const AppointmentsAvailableMasters: React.FC<Props> = ({
                                                             .length -
                                                             master.registred
                                                                 .length}{" "}
-                                                        sessions available on{" "}
+                                                        {_t(
+                                                            "appointments.sessions"
+                                                        )}{" "}
                                                         {toISO8601DateString(
                                                             date as Date
                                                         )}
@@ -110,7 +115,9 @@ export const AppointmentsAvailableMasters: React.FC<Props> = ({
                                                     <Dialog>
                                                         <DialogTrigger asChild>
                                                             <Button className="bg-black text-white hover:bg-zinc-200 hover:text-black font-normal text-md xl:text-xl flex justify-center items-center gap-2">
-                                                                Sign up
+                                                                {_t(
+                                                                    "appointments.signup"
+                                                                )}
                                                                 <MdOutlineScheduleSend />
                                                             </Button>
                                                         </DialogTrigger>
@@ -152,7 +159,9 @@ export const AppointmentsAvailableMasters: React.FC<Props> = ({
                                                                 <ul className="text-base text-zinc-500 text-start">
                                                                     <li>
                                                                         <strong>
-                                                                            Master:
+                                                                            {_t(
+                                                                                "appointments.form.master"
+                                                                            )}
                                                                         </strong>{" "}
                                                                         {
                                                                             master.firstName
@@ -163,7 +172,9 @@ export const AppointmentsAvailableMasters: React.FC<Props> = ({
                                                                     </li>
                                                                     <li>
                                                                         <strong>
-                                                                            Date:
+                                                                            {_t(
+                                                                                "appointments.form.date"
+                                                                            )}
                                                                         </strong>{" "}
                                                                         {toISO8601DateString(
                                                                             date as Date
@@ -171,17 +182,34 @@ export const AppointmentsAvailableMasters: React.FC<Props> = ({
                                                                     </li>
                                                                     <li>
                                                                         <strong>
-                                                                            Time:
+                                                                            {_t(
+                                                                                "appointments.form.time"
+                                                                            )}
                                                                         </strong>{" "}
                                                                         {t}
                                                                     </li>
                                                                     <li>
                                                                         <strong>
-                                                                            Service:
+                                                                            {_t(
+                                                                                "appointments.form.service"
+                                                                            )}
                                                                         </strong>{" "}
-                                                                        {
-                                                                            service
-                                                                        }
+                                                                        {service ===
+                                                                        "lashes"
+                                                                            ? _t(
+                                                                                  "appointments.services.lashes"
+                                                                              )
+                                                                            : service ===
+                                                                              "nails"
+                                                                            ? _t(
+                                                                                  "appointments.services.nails"
+                                                                              )
+                                                                            : service ===
+                                                                              "brows"
+                                                                            ? _t(
+                                                                                  "appointments.services.brows"
+                                                                              )
+                                                                            : undefined}
                                                                     </li>
                                                                 </ul>
                                                             </DialogHeader>
@@ -231,7 +259,11 @@ export const AppointmentsAvailableMasters: React.FC<Props> = ({
                                                                                 >
                                                                                     <FormControl className="text-sm md:text-base lg:text-lg py-6 ">
                                                                                         <SelectTrigger className="focus:outline-none focus:ring-0 focus-visible:outline-none focus-visible:ring-0 border-zinc-400">
-                                                                                            <SelectValue placeholder="Select time" />
+                                                                                            <SelectValue
+                                                                                                placeholder={_t(
+                                                                                                    "appointments.form.select"
+                                                                                                )}
+                                                                                            />
                                                                                         </SelectTrigger>
                                                                                     </FormControl>
                                                                                     <SelectContent>
@@ -254,8 +286,9 @@ export const AppointmentsAvailableMasters: React.FC<Props> = ({
                                                                                                                     time
                                                                                                                 }
                                                                                                             >
-                                                                                                                Start
-                                                                                                                at{" "}
+                                                                                                                {_t(
+                                                                                                                    "appointments.form.start"
+                                                                                                                )}{" "}
                                                                                                                 {time.length ===
                                                                                                                 1
                                                                                                                     ? `0${time}`
@@ -286,7 +319,9 @@ export const AppointmentsAvailableMasters: React.FC<Props> = ({
                                                                                 <FormControl>
                                                                                     <PhoneInput
                                                                                         className="border-zinc-400"
-                                                                                        placeholder="Enter your phone number..."
+                                                                                        placeholder={_t(
+                                                                                            "appointments.form.phone"
+                                                                                        )}
                                                                                         {...field}
                                                                                     />
                                                                                 </FormControl>
@@ -311,7 +346,9 @@ export const AppointmentsAvailableMasters: React.FC<Props> = ({
                                                                                             <Input
                                                                                                 className="py-2 h-12 text-sm md:text-base lg:text-lg focus:outline-none focus:ring-0 focus-visible:outline-none focus-visible:ring-0 border-zinc-400"
                                                                                                 {...field}
-                                                                                                placeholder="First name"
+                                                                                                placeholder={_t(
+                                                                                                    "appointments.form.firstName"
+                                                                                                )}
                                                                                             />
                                                                                         </FormControl>
                                                                                         <FormMessage className="text-xs" />
@@ -333,7 +370,9 @@ export const AppointmentsAvailableMasters: React.FC<Props> = ({
                                                                                             <Input
                                                                                                 className="py-2 h-12 text-sm md:text-base lg:text-lg focus:outline-none focus:ring-0 focus-visible:outline-none focus-visible:ring-0 border-zinc-400"
                                                                                                 {...field}
-                                                                                                placeholder="Last name"
+                                                                                                placeholder={_t(
+                                                                                                    "appointments.form.lastName"
+                                                                                                )}
                                                                                             />
                                                                                         </FormControl>
                                                                                         <FormMessage className="text-xs" />
@@ -356,7 +395,9 @@ export const AppointmentsAvailableMasters: React.FC<Props> = ({
                                                                                                 type="email"
                                                                                                 className="py-2 h-12 text-sm md:text-base lg:text-lg focus:outline-none focus:ring-0 focus-visible:outline-none focus-visible:ring-0 border-zinc-400"
                                                                                                 {...field}
-                                                                                                placeholder="Email"
+                                                                                                placeholder={_t(
+                                                                                                    "appointments.form.email"
+                                                                                                )}
                                                                                             />
                                                                                         </FormControl>
                                                                                         <FormMessage className="text-xs" />
@@ -390,9 +431,9 @@ export const AppointmentsAvailableMasters: React.FC<Props> = ({
                                                                                                             )
                                                                                                         ) : (
                                                                                                             <span className="text-[#505050]">
-                                                                                                                Year
-                                                                                                                of
-                                                                                                                birth
+                                                                                                                {_t(
+                                                                                                                    "appointments.form.birthDate"
+                                                                                                                )}
                                                                                                             </span>
                                                                                                         )}
 
@@ -402,6 +443,18 @@ export const AppointmentsAvailableMasters: React.FC<Props> = ({
                                                                                             </PopoverTrigger>
                                                                                             <PopoverContent className="w-fit">
                                                                                                 <Calendar
+                                                                                                    locale={
+                                                                                                        lang ===
+                                                                                                        "ro"
+                                                                                                            ? ro
+                                                                                                            : lang ===
+                                                                                                              "ru"
+                                                                                                            ? ru
+                                                                                                            : lang ===
+                                                                                                              "en"
+                                                                                                            ? enUS
+                                                                                                            : undefined
+                                                                                                    }
                                                                                                     mode="single"
                                                                                                     captionLayout="dropdown-buttons"
                                                                                                     selected={
@@ -443,7 +496,9 @@ export const AppointmentsAvailableMasters: React.FC<Props> = ({
                                                                                         }
                                                                                         className="py-2 text-sm md:text-base lg:text-lg focus:outline-none focus:ring-0 focus-visible:outline-none focus-visible:ring-0 border-zinc-400"
                                                                                         {...field}
-                                                                                        placeholder="Optional description for master..."
+                                                                                        placeholder={_t(
+                                                                                            "appointments.form.desc"
+                                                                                        )}
                                                                                     />
                                                                                 </FormControl>
                                                                             </FormItem>
@@ -453,7 +508,9 @@ export const AppointmentsAvailableMasters: React.FC<Props> = ({
                                                                         type="submit"
                                                                         className="bg-black text-white hover:bg-zinc-200 hover:text-black font-normal w-full py-6 text-sm md:text-base lg:text-lg flex justify-center items-center gap-2"
                                                                     >
-                                                                        Sign up
+                                                                        {_t(
+                                                                            "appointments.form.btn"
+                                                                        )}
                                                                         <MdOutlineScheduleSend />
                                                                     </Button>
                                                                 </form>

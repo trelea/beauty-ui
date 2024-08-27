@@ -3,6 +3,7 @@ import { useDropzone } from "react-dropzone";
 import { FormControl, FormField, FormItem, FormMessage } from "./ui/form";
 import { Input } from "./ui/input";
 import { UseFormReturn } from "react-hook-form";
+import { useTranslation } from "react-i18next";
 
 interface Props {
     form: UseFormReturn<any>;
@@ -10,6 +11,7 @@ interface Props {
 }
 
 export const UploadThumbanil: React.FC<Props> = ({ form, image }) => {
+    const { t } = useTranslation();
     const [preview, setPreview] = React.useState<string | ArrayBuffer | null>(
         image ? image : ""
     );
@@ -56,18 +58,15 @@ export const UploadThumbanil: React.FC<Props> = ({ form, image }) => {
                             )}
                             <Input {...getInputProps()} type="file" />
                             {isDragActive ? (
-                                <p>Drop the image!</p>
+                                <p>{t("adminMasters.form.dropImg")}</p>
                             ) : (
-                                <p>Click here or drag an image to upload it</p>
+                                <p>{t("adminMasters.form.dragImg")}</p>
                             )}
                         </div>
                     </FormControl>
                     <FormMessage className="text-xs">
                         {fileRejections.length !== 0 && (
-                            <p>
-                                Image must be less than 1MB and of type png,
-                                jpg, or jpeg
-                            </p>
+                            <p>{t("adminMasters.form.rejectImg")}</p>
                         )}
                     </FormMessage>
                 </FormItem>

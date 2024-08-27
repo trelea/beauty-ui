@@ -15,6 +15,7 @@ import { useUpdateMaster } from "@/pages/admin/hooks/useUpdateMaster";
 import { useGetMaster } from "@/pages/admin/hooks/useGetMaster";
 import { UploadThumbanil } from "./UploadThumbnail";
 import { RadioGroup, RadioGroupItem } from "./ui/radio-group";
+import { useTranslation } from "react-i18next";
 
 export const UpdateMaterForm = ({
     id,
@@ -31,13 +32,16 @@ export const UpdateMaterForm = ({
         id,
     });
     const { form, onSubmit } = useUpdateMaster({ data, page, search });
+    const { t } = useTranslation();
 
     if (error || isError) alert("Error");
     if (isLoading || isFetching)
         return (
             <div className="flex flex-col justify-center items-center w-full flex-grow">
                 <SiReactquery className="h-12 w-12 md:w-16 md:h-12 xl:h-20 xl:w-20 aspect-square animate-spin" />
-                <h1 className="text-lg font-medium">Loading...</h1>
+                <h1 className="text-lg font-medium">
+                    {t("adminMasters.load")}
+                </h1>
             </div>
         );
 
@@ -57,7 +61,7 @@ export const UpdateMaterForm = ({
                         form={form}
                         name="firstName"
                         type="text"
-                        placeholder="First Name"
+                        placeholder={t("adminMasters.form.firstName")}
                         forAdmin={true}
                     />
                     {/* LAST NAME */}
@@ -65,7 +69,7 @@ export const UpdateMaterForm = ({
                         form={form}
                         name="lastName"
                         type="text"
-                        placeholder="Last Name"
+                        placeholder={t("adminMasters.form.lastName")}
                         forAdmin={true}
                     />
                     {/* PHONE */}
@@ -73,7 +77,7 @@ export const UpdateMaterForm = ({
                         form={form}
                         name="contact"
                         type="tel"
-                        placeholder="Contact"
+                        placeholder={t("adminMasters.form.contact")}
                         forAdmin={true}
                     />
                     {/* EMAIL */}
@@ -81,7 +85,7 @@ export const UpdateMaterForm = ({
                         form={form}
                         name="email"
                         type="email"
-                        placeholder="Email"
+                        placeholder={t("adminMasters.form.email")}
                         forAdmin={true}
                     />
                     {/* BIRTH DATE */}
@@ -102,7 +106,9 @@ export const UpdateMaterForm = ({
                                 <FormControl>
                                     <Textarea
                                         {...field}
-                                        placeholder="Master description..."
+                                        placeholder={t(
+                                            "adminMasters.form.desc"
+                                        )}
                                         className="placeholder:text-[#505050] placeholder:text-base placeholder:font-light bg-transparent border rounded-lg px-6 text-black text-lg font-light focus:border-black focus-visible:border-black focus:ring-0 focus-visible:ring-0 focus:outline-none focus-visible:outline-none h-12 border-zinc-300"
                                     />
                                 </FormControl>
@@ -116,7 +122,9 @@ export const UpdateMaterForm = ({
                         name="services"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Services</FormLabel>
+                                <FormLabel>
+                                    {t("adminMasters.form.services.name")}
+                                </FormLabel>
                                 <FormControl>
                                     <RadioGroup
                                         onValueChange={field.onChange}
@@ -130,7 +138,11 @@ export const UpdateMaterForm = ({
                                                             value={s}
                                                         />
                                                     </FormControl>
-                                                    <FormLabel>{s}</FormLabel>
+                                                    <FormLabel>
+                                                        {t(
+                                                            `adminMasters.form.services.${s.toLowerCase()}`
+                                                        )}
+                                                    </FormLabel>
                                                 </FormItem>
                                             );
                                         })}
@@ -142,7 +154,7 @@ export const UpdateMaterForm = ({
                     />
                     {/* UPDATE */}
                     <Button className="w-full" type="submit">
-                        Update
+                        {t("adminMasters.form.update")}
                     </Button>
                 </div>
             </form>
