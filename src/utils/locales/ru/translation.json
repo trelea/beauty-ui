@@ -47,7 +47,8 @@
                 "services": "Услуги",
                 "lashes": "Ресницы",
                 "brows": "Брови",
-                "nails": "Ногти"
+                "nails": "Ногти",
+                "all": "Все"
             },
             "masters": "Мастера",
             "reviews": {
