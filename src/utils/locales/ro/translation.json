@@ -47,9 +47,10 @@
                 "services": "Servicii",
                 "lashes": "Gene",
                 "brows": "Sprâncene",
-                "nails": "Unghii"
+                "nails": "Unghii",
+                "all": "Toate"
             },
-            "masters": "Măiestri",
+            "masters": "Meșteri",
             "reviews": {
                 "reviews": "Recenzii",
                 "lr": {
@@ -147,7 +148,7 @@
                 "tableHeader": {
                     "service": "Serviciu",
                     "dt": "Dată/Ora",
-                    "master": "Maestru",
+                    "master": "Meșter",
                     "status": "Stare"
                 }
             }
@@ -160,11 +161,11 @@
                 "brows": "Sprincene"
             },
             "calendar": "Selectează Data",
-            "availableMasters": "Maieștri Disponibili",
+            "availableMasters": "Meșteri Disponibili",
             "signup": "Înscrie-te",
             "sessions": "ședințe disponibile pe",
             "form": {
-                "master": "Maestru:",
+                "master": "Meșter:",
                 "date": "Data:",
                 "time": "Ora:",
                 "service": "Serviciu:",
@@ -175,7 +176,7 @@
                 "lastName": "Nume",
                 "email": "Email",
                 "birthDate": "Anul nașterii",
-                "desc": "Descriere opțională pentru maestru...",
+                "desc": "Descriere opțională pentru meșter...",
                 "btn": "Înscrie-te"
             }
         },
@@ -190,7 +191,7 @@
 
         "adminNav": {
             "appointments": "Programări",
-            "masters": "Maieștri",
+            "masters": "Meșteri",
             "logout": "Deconectare"
         },
 
@@ -210,7 +211,7 @@
                 "client": "Client",
                 "contact": "Contact",
                 "desc": "Descriere",
-                "master": "Maestru",
+                "master": "Meșter",
                 "status": "Stare",
                 "actions": "Acțiuni"
             },
@@ -221,12 +222,12 @@
         },
 
         "adminMasters": {
-            "search": "Caută maestru...",
-            "createBtn": "Creează Maestru",
+            "search": "Caută meșter...",
+            "createBtn": "Creează Meșter",
             "load": "Încărcare...",
             "tableHeaders": {
                 "img": "Imagine",
-                "master": "Maestru",
+                "master": "Meșter",
                 "email": "Email",
                 "contact": "Contact",
                 "services": "Servicii",
@@ -239,7 +240,7 @@
             },
             "btn1": "Editează",
             "btn2": "Șterge",
-            "edit": "Editează maestrul",
+            "edit": "Editează meșter-ul",
             "form": {
                 "dropImg": "Aruncați imaginea!",
                 "dragImg": "Faceți clic aici sau trageți o imagine pentru a o încărca",
@@ -248,7 +249,7 @@
                 "lastName": "Nume",
                 "contact": "Contact",
                 "email": "Email",
-                "decs": "Descriere maestru...",
+                "desc": "Descriere meșter...",
                 "services": {
                     "name": "servicii",
                     "lashes": "Gene",

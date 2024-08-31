@@ -1,13 +1,13 @@
 import React from "react";
 import { Card, CardContent } from "./ui/card";
-import { Link, SetURLSearchParams } from "react-router-dom";
+import { SetURLSearchParams } from "react-router-dom";
 import { GrUserSettings } from "react-icons/gr";
 import { RiLockPasswordLine, RiCalendarScheduleLine } from "react-icons/ri";
 import { MdLogout } from "react-icons/md";
 import { Button } from "./ui/button";
 import { useUserStore } from "@/store/store";
 import { useLogout } from "@/pages/login/hooks/useLogout";
-import { FaGoogle } from "react-icons/fa";
+// import { FaGoogle } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
 
 interface Props {
@@ -24,7 +24,7 @@ export const SettingsOpts: React.FC<Props> = ({ params, setParams, user }) => {
         <Card className="shadow-lg rounded-xl h-full">
             <CardContent className="p-2 md:p-3 xl:p-4 m-0">
                 <ul className="grid grid-cols-2 gap-2 md:grid-cols-4 md:gap-3 xl:flex xl:flex-col xl:gap-4">
-                    {user?.provider === "google" && (
+                    {/* {user?.provider === "google" && (
                         <Link to={"https://myaccount.google.com/"}>
                             <li
                                 className={`flex justify-center xl:justify-start items-center font-medium text-sm rounded-lg gap-2 p-2 md:text-base lg:text-lg xl:text-xl 2xl:text-xl xl:p-4 xl:gap-4 ${
@@ -37,7 +37,7 @@ export const SettingsOpts: React.FC<Props> = ({ params, setParams, user }) => {
                                 <h1>{t("settings.googleAcc")}</h1>
                             </li>
                         </Link>
-                    )}
+                    )} */}
 
                     {!user?.provider && (
                         <li

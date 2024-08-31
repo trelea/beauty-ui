@@ -9,8 +9,12 @@ export interface getMastersCardsDetailsRes {
     description: string;
 }
 
-export const getMastersDetailsCardsFn = async (): Promise<
-    AxiosResponse<getMastersCardsDetailsRes[]>
-> => {
-    return await axiosApi.get<getMastersCardsDetailsRes[]>("/masters/details");
+export const getMastersDetailsCardsFn = async ({
+    service,
+}: {
+    service: "Lashes" | "Brows" | "Nails" | null;
+}): Promise<AxiosResponse<getMastersCardsDetailsRes[]>> => {
+    return await axiosApi.get<getMastersCardsDetailsRes[]>(
+        `/masters/details/${service === null ? "" : service}`
+    );
 };

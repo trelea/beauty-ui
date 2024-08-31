@@ -47,7 +47,8 @@
                 "services": "Services",
                 "lashes": "Lashes",
                 "brows": "Brows",
-                "nails": "Nails"
+                "nails": "Nails",
+                "all": "All"
             },
             "masters": "Masters",
             "reviews": {
