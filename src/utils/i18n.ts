@@ -9,14 +9,14 @@ import ru from "./locales/ru/translation.json";
 const resources = { en, ro, ru };
 
 i18n.use(initReactI18next)
-    // .use(LanguageDetector)
-    .init({
-        resources,
-        debug: false,
-        fallbackLng: "ro",
-        lng: localStorage.getItem("beauty-i18n-Lang") || "ro",
-        interpolation: { escapeValue: false },
-        // detection: {
-        //     order: ["path", "localStorage"],
-        // },
-    });
+	// .use(LanguageDetector)
+	.init({
+		resources,
+		debug: false,
+		fallbackLng: "ro",
+		lng: localStorage.getItem("beauty-i18n-Lang") || "ro",
+		interpolation: { escapeValue: false },
+		// detection: {
+		//     order: ["path", "localStorage"],
+		// },
+	});

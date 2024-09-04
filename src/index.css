@@ -3,75 +3,75 @@
 @tailwind utilities;
 
 @layer base {
-    :root {
-        --background: 67 0% 95%;
-        --foreground: 67 0% 10%;
-        --card: 67 0% 92%;
-        --card-foreground: 67 0% 15%;
-        --popover: 67 0% 95%;
-        --popover-foreground: 67 95% 10%;
-        --primary: 67 53.4% 68%;
-        --primary-foreground: 0 0% 0%;
-        --secondary: 67 10% 90%;
-        --secondary-foreground: 0 0% 0%;
-        --muted: 29 10% 92%;
-        --muted-foreground: 67 0% 40%;
-        --accent: 29 10% 90%;
-        --accent-foreground: 67 0% 15%;
-        --destructive: 0 50% 50%;
-        --destructive-foreground: 67 0% 92%;
-        --border: 67 20% 82%;
-        --input: 67 20% 50%;
-        --ring: 67 53.4% 68%;
-        --radius: 0.5rem;
-    }
-    .dark {
-        --background: 67 10% 10%;
-        --foreground: 67 0% 92%;
-        --card: 67 0% 10%;
-        --card-foreground: 67 0% 92%;
-        --popover: 67 10% 5%;
-        --popover-foreground: 67 0% 92%;
-        --primary: 67 53.4% 68%;
-        --primary-foreground: 0 0% 0%;
-        --secondary: 0 0% 86%;
-        --secondary-foreground: 0 0% 100%;
-        --muted: 29 10% 25%;
-        --muted-foreground: 67 0% 65%;
-        --accent: 29 10% 25%;
-        --accent-foreground: 67 0% 92%;
-        --destructive: 0 50% 50%;
-        --destructive-foreground: 67 0% 92%;
-        --border: 67 20% 50%;
-        --input: 67 20% 50%;
-        --ring: 67 53.4% 68%;
-        --radius: 0.5rem;
-    }
+  :root {
+    --background: 67 0% 95%;
+    --foreground: 67 0% 10%;
+    --card: 67 0% 92%;
+    --card-foreground: 67 0% 15%;
+    --popover: 67 0% 95%;
+    --popover-foreground: 67 95% 10%;
+    --primary: 67 53.4% 68%;
+    --primary-foreground: 0 0% 0%;
+    --secondary: 67 10% 90%;
+    --secondary-foreground: 0 0% 0%;
+    --muted: 29 10% 92%;
+    --muted-foreground: 67 0% 40%;
+    --accent: 29 10% 90%;
+    --accent-foreground: 67 0% 15%;
+    --destructive: 0 50% 50%;
+    --destructive-foreground: 67 0% 92%;
+    --border: 67 20% 82%;
+    --input: 67 20% 50%;
+    --ring: 67 53.4% 68%;
+    --radius: 0.5rem;
+  }
+  .dark {
+    --background: 67 10% 10%;
+    --foreground: 67 0% 92%;
+    --card: 67 0% 10%;
+    --card-foreground: 67 0% 92%;
+    --popover: 67 10% 5%;
+    --popover-foreground: 67 0% 92%;
+    --primary: 67 53.4% 68%;
+    --primary-foreground: 0 0% 0%;
+    --secondary: 0 0% 86%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 29 10% 25%;
+    --muted-foreground: 67 0% 65%;
+    --accent: 29 10% 25%;
+    --accent-foreground: 67 0% 92%;
+    --destructive: 0 50% 50%;
+    --destructive-foreground: 67 0% 92%;
+    --border: 67 20% 50%;
+    --input: 67 20% 50%;
+    --ring: 67 53.4% 68%;
+    --radius: 0.5rem;
+  }
 }
 
 @layer base {
-    * {
-        @apply border-border;
-    }
-    body {
-        @apply bg-background text-foreground;
-    }
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
 }
 
 @font-face {
-    font-family: "Celesse";
-    src: url("./assets/Celesse-Regular.woff") format("woff2"),
-        url("./assets/Celesse-Regular.woff") format("woff");
+  font-family: "Celesse";
+  src: url("./assets/Celesse-Regular.woff") format("woff2"),
+    url("./assets/Celesse-Regular.woff") format("woff");
 }
 
 @font-face {
-    font-family: "Sonder";
-    src: url("./assets/Sonder-Regular.woff") format("woff2"),
-        url("./assets/Sonder-Regular.woff") format("woff");
+  font-family: "Sonder";
+  src: url("./assets/Sonder-Regular.woff") format("woff2"),
+    url("./assets/Sonder-Regular.woff") format("woff");
 }
 
 @font-face {
-    font-family: "Recoleta";
-    src: url("./assets/Recoleta-Regular.woff") format("woff2"),
-        url("./assets/Recoleta-Regular.woff") format("woff");
+  font-family: "Recoleta";
+  src: url("./assets/Recoleta-Regular.woff") format("woff2"),
+    url("./assets/Recoleta-Regular.woff") format("woff");
 }
