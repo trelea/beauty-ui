@@ -3,14 +3,14 @@ import { logoutFn } from "../api/login.apis";
 import { AxiosError } from "axios";
 
 export const useLogout = (fn: () => void) => {
-    const logout = useMutation({
-        mutationFn: async () => await logoutFn(),
-        onError: (err: AxiosError) => console.log(err.response?.data),
-        onSuccess: () => {
-            fn();
-            window.location.pathname = "/";
-        },
-    });
+	const logout = useMutation({
+		mutationFn: async () => await logoutFn(),
+		onError: (err: AxiosError) => console.log(err.response?.data),
+		onSuccess: () => {
+			fn();
+			window.location.pathname = "/";
+		},
+	});
 
-    return { logout };
+	return { logout };
 };

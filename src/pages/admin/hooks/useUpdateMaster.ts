@@ -7,155 +7,157 @@ import React from "react";
 import { toISO8601DateString } from "@/lib/utils";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useToast } from "@/components/ui/use-toast";
+import { useTranslation } from "react-i18next";
 
 const formSchema = z.object({
-    firstName: z
-        .union([z.string().min(2).max(50), z.literal("")])
-        .transform((e) => (e === "" ? undefined : e))
-        .optional(),
-    lastName: z
-        .union([z.string().min(2).max(50), z.literal("")])
-        .transform((e) => (e === "" ? undefined : e))
-        .optional(),
-    contact: z
-        .union([z.string().min(4).max(12), z.literal("")])
-        .transform((e) => (e === "" ? undefined : e))
-        .optional(),
-    email: z
-        .union([z.string().email(), z.literal("")])
-        .transform((e) => (e === "" ? undefined : e))
-        .optional(),
-    birthDate: z
-        .union([z.date(), z.literal("")])
-        .transform((e) => (e === "" ? undefined : e))
-        .optional(),
-    description: z.string().optional(),
-    services: z
-        .union([
-            z.enum(["Nails", "Brows", "Lashes"], {
-                message: "You need to select at least one service.",
-            }),
-            z.literal(""),
-        ])
-        .transform((e) => (e === "" ? undefined : e))
-        .optional(),
-    thumbnail: z
-        .union([z.instanceof(File), z.literal("")])
-        .transform((e) => (e === "" ? undefined : e))
-        .optional(),
+	firstName: z
+		.union([z.string().min(2).max(50), z.literal("")])
+		.transform((e) => (e === "" ? undefined : e))
+		.optional(),
+	lastName: z
+		.union([z.string().min(2).max(50), z.literal("")])
+		.transform((e) => (e === "" ? undefined : e))
+		.optional(),
+	contact: z
+		.union([z.string().min(4).max(12), z.literal("")])
+		.transform((e) => (e === "" ? undefined : e))
+		.optional(),
+	email: z
+		.union([z.string().email(), z.literal("")])
+		.transform((e) => (e === "" ? undefined : e))
+		.optional(),
+	birthDate: z
+		.union([z.date(), z.literal("")])
+		.transform((e) => (e === "" ? undefined : e))
+		.optional(),
+	description: z.string().optional(),
+	services: z
+		.union([
+			z.enum(["Nails", "Brows", "Lashes"], {
+				message: "You need to select at least one service.",
+			}),
+			z.literal(""),
+		])
+		.transform((e) => (e === "" ? undefined : e))
+		.optional(),
+	thumbnail: z
+		.union([z.instanceof(File), z.literal("")])
+		.transform((e) => (e === "" ? undefined : e))
+		.optional(),
 });
 
 export const useUpdateMaster = ({
-    data,
-    page,
-    search,
+	data,
+	page,
+	search,
 }: // setOpen,
-{
-    data: AxiosResponse<getMastersRes> | undefined;
-    page: string;
-    search: string;
-    // setOpen: any;
-}) => {
-    const { toast } = useToast();
-    const client = useQueryClient();
-    const mutation = useMutation({
-        mutationFn: async ({
-            id,
-            data,
-            params,
-        }: {
-            id: string;
-            data: FormData;
-            params: servicesReq;
-        }) => await updateMasterFn({ id, data, params }),
-        onError: (err: AxiosError<{ target: any }>) => {
-            // Email exception
-            if ((err.response?.data.target[0] as string) === "email")
-                toast({
-                    variant: "destructive",
-                    title: "Uh oh! Something went wrong.",
-                    description: "Masters must have unique emails.",
-                });
-        },
-        onSuccess: () => {
-            // setOpen(false);
-            form.reset();
-            client.invalidateQueries({ queryKey: ["masters", page, search] });
-            window.location.reload();
-        },
-    });
-    const form = useForm<z.infer<typeof formSchema> | any>({
-        resolver: zodResolver(formSchema),
-        defaultValues: {
-            firstName: "",
-            lastName: "",
-            contact: "",
-            email: "",
-            birthDate: "",
-            description: "",
-            services: "",
-            thumbnail: "",
-        },
-    });
-    React.useEffect(() => {
-        console.log(data);
-        form.reset({
-            firstName: data?.data.firstName,
-            lastName: data?.data.lastName,
-            contact: data?.data.contact,
-            email: data?.data.email,
-            birthDate: new Date(
-                data?.data.birthDate
-                    ? data?.data.birthDate.split("T")[0]
-                    : new Date().toJSON().split("T")[0]
-            ),
-            description:
-                data?.data.description === null ? "" : data?.data.description,
-            services: data?.data.services[0],
-            thumbnail: new File([""], String(data?.data.thumbnail)),
-        });
-    }, [data]);
+	{
+		data: AxiosResponse<getMastersRes> | undefined;
+		page: string;
+		search: string;
+		// setOpen: any;
+	}) => {
+	const { t } = useTranslation()
+	const { toast } = useToast();
+	const client = useQueryClient();
+	const mutation = useMutation({
+		mutationFn: async ({
+			id,
+			data,
+			params,
+		}: {
+			id: string;
+			data: FormData;
+			params: servicesReq;
+		}) => await updateMasterFn({ id, data, params }),
+		onError: (err: AxiosError<{ target: any }>) => {
+			// Email exception
+			if ((err.response?.data.target[0] as string) === "email")
+				toast({
+					variant: "destructive",
+					title: t('emailErr.title'),
+					description: t('emailErr.desc'),
+				});
+		},
+		onSuccess: () => {
+			// setOpen(false);
+			form.reset();
+			client.invalidateQueries({ queryKey: ["masters", page, search] });
+			window.location.reload();
+		},
+	});
+	const form = useForm<z.infer<typeof formSchema> | any>({
+		resolver: zodResolver(formSchema),
+		defaultValues: {
+			firstName: "",
+			lastName: "",
+			contact: "",
+			email: "",
+			birthDate: "",
+			description: "",
+			services: "",
+			thumbnail: "",
+		},
+	});
+	React.useEffect(() => {
+		console.log(data);
+		form.reset({
+			firstName: data?.data.firstName,
+			lastName: data?.data.lastName,
+			contact: data?.data.contact,
+			email: data?.data.email,
+			birthDate: new Date(
+				data?.data.birthDate
+					? data?.data.birthDate.split("T")[0]
+					: new Date().toJSON().split("T")[0]
+			),
+			description:
+				data?.data.description === null ? "" : data?.data.description,
+			services: data?.data.services[0],
+			thumbnail: new File([""], String(data?.data.thumbnail)),
+		});
+	}, [data]);
 
-    const onSubmit = (
-        values:
-            | z.infer<typeof formSchema>
-            | {
-                  firstName: string;
-                  lastName: string;
-                  contact: string;
-                  email: string;
-                  birthDate: string;
-                  description: string;
-                  services: string[];
-                  thumbnail: any;
-              }
-    ) => {
-        values.birthDate = toISO8601DateString(
-            new Date(String(values.birthDate))
-        );
-        const formData: FormData = new FormData();
-        formData.append("firstName", values.firstName as string);
-        formData.append("lastName", values.lastName as string);
-        formData.append("contact", values.contact as string);
-        formData.append("email", values.email as string);
-        formData.append("birthDate", values.birthDate as string);
-        formData.append("description", values.description as string);
-        if (
-            (values.thumbnail.name as string) !==
-            (data?.data.thumbnail as string)
-        )
-            formData.append("thumbnail", values.thumbnail);
+	const onSubmit = (
+		values:
+			| z.infer<typeof formSchema>
+			| {
+				firstName: string;
+				lastName: string;
+				contact: string;
+				email: string;
+				birthDate: string;
+				description: string;
+				services: string[];
+				thumbnail: any;
+			}
+	) => {
+		values.birthDate = toISO8601DateString(
+			new Date(String(values.birthDate))
+		);
+		const formData: FormData = new FormData();
+		formData.append("firstName", values.firstName as string);
+		formData.append("lastName", values.lastName as string);
+		formData.append("contact", values.contact as string);
+		formData.append("email", values.email as string);
+		formData.append("birthDate", values.birthDate as string);
+		formData.append("description", values.description as string);
+		if (
+			(values.thumbnail.name as string) !==
+			(data?.data.thumbnail as string)
+		)
+			formData.append("thumbnail", values.thumbnail);
 
-        mutation.mutate({
-            id: data?.data.id as string,
-            data: formData,
-            params: {
-                lashes: values.services === "Lashes" ? true : false,
-                brows: values.services === "Brows" ? true : false,
-                nails: values.services === "Nails" ? true : false,
-            },
-        });
-    };
+		mutation.mutate({
+			id: data?.data.id as string,
+			data: formData,
+			params: {
+				lashes: values.services === "Lashes" ? true : false,
+				brows: values.services === "Brows" ? true : false,
+				nails: values.services === "Nails" ? true : false,
+			},
+		});
+	};
 
-    return { form, onSubmit };
+	return { form, onSubmit };
 };

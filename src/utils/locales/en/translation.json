@@ -1,266 +1,271 @@
 {
-    "translation": {
-        "lang": "en",
+  "translation": {
+    "lang": "en",
 
-        "navbar": {
-            "logo": "Logo",
-            "home": "Home",
-            "appointments": "Appointments",
-            "faq": "FAQ",
-            "contacts": "Contacts",
-            "login": "Login",
-            "signup": "SingnUp"
+    "navbar": {
+      "logo": "Logo",
+      "home": "Home",
+      "appointments": "Appointments",
+      "faq": "FAQ",
+      "contacts": "Contacts",
+      "login": "Login",
+      "signup": "SingnUp"
+    },
+
+    "login": {
+      "login": "login",
+      "email": "email",
+      "password": "password",
+      "noAcc": "<0>Not have an account yet? <2>Register now</2></0>"
+    },
+
+    "register": {
+      "register": "Register",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "phone": "Phone",
+      "email": "Email",
+      "password": "Password",
+      "birthDate": "Birth date",
+      "alreadyAcc": "<0>Already have an account? <2>Login now</2></0>"
+    },
+
+    "otp": {
+      "load": "Trying to validate token...",
+      "invalid": "Invalid Token",
+      "error": "<0>Your token may be invalid or an expired token. Please go back and try to <2>Signup again.</2></0>",
+      "goBack": "<0>Go back to sign in? <2>Login now</2></0>",
+      "verify": "Verify your email",
+      "btn": "verify"
+    },
+
+    "home": {
+      "hero": {
+        "desc": "This company was created to make it easier to take care of yourself"
+      },
+      "services": {
+        "services": "Services",
+        "lashes": "Lashes",
+        "brows": "Brows",
+        "nails": "Nails",
+        "all": "All"
+      },
+      "masters": "Masters",
+      "reviews": {
+        "reviews": "Reviews",
+        "lr": {
+          "text1": "Great experience! The staff was very friendly and knowledgeable.",
+          "text2": "Absolutely amazing service. My hair has never looked better!",
+          "text3": "Decent salon, but a bit pricey for what you get."
         },
-
-        "login": {
-            "login": "login",
-            "email": "email",
-            "password": "password",
-            "noAcc": "<0>Not have an account yet? <2>Register now</2></0>"
+        "mr": {
+          "text1": "I had a wonderful experience at this beauty salon. The staff were incredibly attentive and friendly. My stylist, Sarah, really listened to what I wanted and gave me a haircut that exceeded my expectations.",
+          "text2": "This salon is absolutely amazing! I've been coming here for years, and they never disappoint. The stylists are not only skilled but also genuinely care about their clients.",
+          "text3": "My experience at this salon was decent overall. The haircut I received was good, but I felt it was a bit pricey for what I got.",
+          "text4": "I cannot say enough good things about this salon! From the moment I walked in, I felt welcomed and valued as a client. The stylists here are true artists who take the time to understand your hair goals and deliver results that exceed expectations. The salon environment is luxurious yet inviting, and the attention to detail is impeccable. Whether you're looking for a simple haircut or a complete makeover, this salon is the place to go!",
+          "text5": "My experience at this salon was disappointing. Despite showing pictures and explaining what I wanted, the stylist seemed rushed and didn't really listen to my requests. The haircut I received was not what I had in mind, and I left feeling frustrated. The salon itself was clean, but the overall service fell short of my expectations. I hope they can improve their communication and client care in the future.",
+          "text6": "I had a great experience at this salon! The stylist I saw was skilled and friendly, and I loved the haircut she gave me. The salon has a trendy yet comfortable atmosphere, and I felt relaxed throughout my visit. The only reason I didn't give it five stars is because the pricing was a bit higher than I expected. Overall, though, I would definitely recommend this salon to friends and family."
+        }
+      },
+      "courses": {
+        "courses": "Courses",
+        "lashes": {
+          "lashes": "Lashes",
+          "desc": "Lorem ipsum pain sits, well, being a part of the elite. Except, it's a situation! Or, which! It is here and there escaping the rejection of the problem."
         },
-
-        "register": {
-            "register": "Register",
-            "firstName": "First Name",
-            "lastName": "Last Name",
-            "phone": "Phone",
-            "email": "Email",
-            "password": "Password",
-            "birthDate": "Birth date",
-            "alreadyAcc": "<0>Already have an account? <2>Login now</2></0>"
+        "brows": {
+          "brows": "Brows",
+          "desc": "Lorem ipsum pain sits, well, being a part of the elite. Except, it's a situation! Or, which! It is here and there escaping the rejection of the problem."
         },
-
-        "otp": {
-            "load": "Trying to validate token...",
-            "invalid": "Invalid Token",
-            "error": "<0>Your token may be invalid or an expired token. Please go back and try to <2>Signup again.</2></0>",
-            "goBack": "<0>Go back to sign in? <2>Login now</2></0>",
-            "verify": "Verify your email",
-            "btn": "verify"
+        "nails": {
+          "nails": "Nails",
+          "desc": "Lorem ipsum pain sits, well, being a part of the elite. Except, it's a situation! Or, which! It is here and there escaping the rejection of the problem."
+        }
+      },
+      "faq": {
+        "faq": "FAQ",
+        "item1": {
+          "title": "What services does your salon offer?",
+          "desc": "Lorem ipsum pain itself, sitting among the elite of the world. Does it repel or explain nothing? From being repelled, minimal hatred provides a life, being, for the most part, almost as if a place for the presentation is reduced to seeking anything that is truly harsh. And from the pains, actions are often rejected. It is often explained by dividing harshness and rejecting pain. Still, a life that is reduced!"
         },
-
-        "home": {
-            "hero": {
-                "desc": "This company was created to make it easier to take care of yourself"
-            },
-            "services": {
-                "services": "Services",
-                "lashes": "Lashes",
-                "brows": "Brows",
-                "nails": "Nails",
-                "all": "All"
-            },
-            "masters": "Masters",
-            "reviews": {
-                "reviews": "Reviews",
-                "lr": {
-                    "text1": "Great experience! The staff was very friendly and knowledgeable.",
-                    "text2": "Absolutely amazing service. My hair has never looked better!",
-                    "text3": "Decent salon, but a bit pricey for what you get."
-                },
-                "mr": {
-                    "text1": "I had a wonderful experience at this beauty salon. The staff were incredibly attentive and friendly. My stylist, Sarah, really listened to what I wanted and gave me a haircut that exceeded my expectations.",
-                    "text2": "This salon is absolutely amazing! I've been coming here for years, and they never disappoint. The stylists are not only skilled but also genuinely care about their clients.",
-                    "text3": "My experience at this salon was decent overall. The haircut I received was good, but I felt it was a bit pricey for what I got.",
-                    "text4": "I cannot say enough good things about this salon! From the moment I walked in, I felt welcomed and valued as a client. The stylists here are true artists who take the time to understand your hair goals and deliver results that exceed expectations. The salon environment is luxurious yet inviting, and the attention to detail is impeccable. Whether you're looking for a simple haircut or a complete makeover, this salon is the place to go!",
-                    "text5": "My experience at this salon was disappointing. Despite showing pictures and explaining what I wanted, the stylist seemed rushed and didn't really listen to my requests. The haircut I received was not what I had in mind, and I left feeling frustrated. The salon itself was clean, but the overall service fell short of my expectations. I hope they can improve their communication and client care in the future.",
-                    "text6": "I had a great experience at this salon! The stylist I saw was skilled and friendly, and I loved the haircut she gave me. The salon has a trendy yet comfortable atmosphere, and I felt relaxed throughout my visit. The only reason I didn't give it five stars is because the pricing was a bit higher than I expected. Overall, though, I would definitely recommend this salon to friends and family."
-                }
-            },
-            "courses": {
-                "courses": "Courses",
-                "lashes": {
-                    "lashes": "Lashes",
-                    "desc": "Lorem ipsum pain sits, well, being a part of the elite. Except, it's a situation! Or, which! It is here and there escaping the rejection of the problem."
-                },
-                "brows": {
-                    "brows": "Brows",
-                    "desc": "Lorem ipsum pain sits, well, being a part of the elite. Except, it's a situation! Or, which! It is here and there escaping the rejection of the problem."
-                },
-                "nails": {
-                    "nails": "Nails",
-                    "desc": "Lorem ipsum pain sits, well, being a part of the elite. Except, it's a situation! Or, which! It is here and there escaping the rejection of the problem."
-                }
-            },
-            "faq": {
-                "faq": "FAQ",
-                "item1": {
-                    "title": "What services does your salon offer?",
-                    "desc": "Lorem ipsum pain itself, sitting among the elite of the world. Does it repel or explain nothing? From being repelled, minimal hatred provides a life, being, for the most part, almost as if a place for the presentation is reduced to seeking anything that is truly harsh. And from the pains, actions are often rejected. It is often explained by dividing harshness and rejecting pain. Still, a life that is reduced!"
-                },
-                "item2": {
-                    "title": "How can I make an appointment?",
-                    "desc": "Lorem ipsum pain itself, sitting among the elite of the world. Does it repel or explain nothing? From being repelled, minimal hatred provides a life, being, for the most part, almost as if a place for the presentation is reduced to seeking anything that is truly harsh. And from the pains, actions are often rejected. It is often explained by dividing harshness and rejecting pain. Still, a life that is reduced!"
-                },
-                "item3": {
-                    "title": "What safety measures do you take to ensure client safety?",
-                    "desc": "Lorem ipsum pain itself, sitting among the elite of the world. Does it repel or explain nothing? From being repelled, minimal hatred provides a life, being, for the most part, almost as if a place for the presentation is reduced to seeking anything that is truly harsh. And from the pains, actions are often rejected. It is often explained by dividing harshness and rejecting pain. Still, a life that is reduced!"
-                },
-                "item4": {
-                    "title": "What brands of cosmetics do you use for hair care?",
-                    "desc": "Lorem ipsum pain itself, sitting among the elite of the world. Does it repel or explain nothing? From being repelled, minimal hatred provides a life, being, for the most part, almost as if a place for the presentation is reduced to seeking anything that is truly harsh. And from the pains, actions are often rejected. It is often explained by dividing harshness and rejecting pain. Still, a life that is reduced!"
-                },
-                "item5": {
-                    "title": "Can I cancel or reschedule an appointment?",
-                    "desc": "Lorem ipsum pain itself, sitting among the elite of the world. Does it repel or explain nothing? From being repelled, minimal hatred provides a life, being, for the most part, almost as if a place for the presentation is reduced to seeking anything that is truly harsh. And from the pains, actions are often rejected. It is often explained by dividing harshness and rejecting pain. Still, a life that is reduced!"
-                }
-            },
-            "contacts": {
-                "contacts": "Contacts",
-                "logo": "Logo",
-                "addr": "Our Address",
-                "appointments": "Appointments",
-                "courses": "Courses",
-                "faq": "FAQ",
-                "policy": "Privacy Policy"
-            }
+        "item2": {
+          "title": "How can I make an appointment?",
+          "desc": "Lorem ipsum pain itself, sitting among the elite of the world. Does it repel or explain nothing? From being repelled, minimal hatred provides a life, being, for the most part, almost as if a place for the presentation is reduced to seeking anything that is truly harsh. And from the pains, actions are often rejected. It is often explained by dividing harshness and rejecting pain. Still, a life that is reduced!"
         },
-
-        "settings": {
-            "joined": "Joined On",
-            "googleAcc": "Google Account",
-            "edit": "Edit profile",
-            "changePwd": "Change password",
-            "appointments": "Appointments",
-            "logout": "Logout",
-            "editProfile": {
-                "loading": "Loading...",
-                "errTitle": "Uh oh! Something went wrong.",
-                "errDesc": "There was a problem with your request.",
-                "try": "Try again...",
-                "firstName": "First Name",
-                "lastName": "Last Name",
-                "phone": "Phone",
-                "birthDate": "Birth date",
-                "btn": "Save"
-            },
-            "pwd": {
-                "current": "Current password",
-                "new": "New password",
-                "confirm": "Confirm password",
-                "btn": "save"
-            },
-            "appointmentsUser": {
-                "load": " Loading...",
-                "errTitle": "Uh oh! Something went wrong.",
-                "errDesc": "There was a problem with your request.",
-                "try": "Try again...",
-                "tableHeader": {
-                    "service": "Service",
-                    "dt": "Date/Time",
-                    "master": "Master",
-                    "status": "Status"
-                }
-            }
+        "item3": {
+          "title": "What safety measures do you take to ensure client safety?",
+          "desc": "Lorem ipsum pain itself, sitting among the elite of the world. Does it repel or explain nothing? From being repelled, minimal hatred provides a life, being, for the most part, almost as if a place for the presentation is reduced to seeking anything that is truly harsh. And from the pains, actions are often rejected. It is often explained by dividing harshness and rejecting pain. Still, a life that is reduced!"
         },
-
-        "appointments": {
-            "services": {
-                "lashes": "Lashes",
-                "nails": "Nails",
-                "brows": "Brows"
-            },
-            "calendar": "Select Date",
-            "availableMasters": "Available Masters",
-            "signup": "Sign up",
-            "sessions": "sessions available on",
-            "form": {
-                "master": "Master:",
-                "date": "Date:",
-                "time": "Time:",
-                "service": "Service:",
-                "select": "Select Time",
-                "start": "Start at",
-                "phone": "Enter your phone number...",
-                "firstName": "First name",
-                "lastName": "Last name",
-                "email": "Email",
-                "birthDate": "Year of birth",
-                "desc": "Optional description for master...",
-                "btn": "Sign up"
-            }
+        "item4": {
+          "title": "What brands of cosmetics do you use for hair care?",
+          "desc": "Lorem ipsum pain itself, sitting among the elite of the world. Does it repel or explain nothing? From being repelled, minimal hatred provides a life, being, for the most part, almost as if a place for the presentation is reduced to seeking anything that is truly harsh. And from the pains, actions are often rejected. It is often explained by dividing harshness and rejecting pain. Still, a life that is reduced!"
         },
+        "item5": {
+          "title": "Can I cancel or reschedule an appointment?",
+          "desc": "Lorem ipsum pain itself, sitting among the elite of the world. Does it repel or explain nothing? From being repelled, minimal hatred provides a life, being, for the most part, almost as if a place for the presentation is reduced to seeking anything that is truly harsh. And from the pains, actions are often rejected. It is often explained by dividing harshness and rejecting pain. Still, a life that is reduced!"
+        }
+      },
+      "contacts": {
+        "contacts": "Contacts",
+        "logo": "Logo",
+        "addr": "Our Address",
+        "appointments": "Appointments",
+        "courses": "Courses",
+        "faq": "FAQ",
+        "policy": "Privacy Policy"
+      }
+    },
 
-        "googleSuccess": "Successfully LogedIn With Google.",
-        "googleFail": "Failed LogedIn With Google.",
+    "settings": {
+      "joined": "Joined On",
+      "googleAcc": "Google Account",
+      "edit": "Edit profile",
+      "changePwd": "Change password",
+      "appointments": "Appointments",
+      "logout": "Logout",
+      "editProfile": {
+        "loading": "Loading...",
+        "errTitle": "Uh oh! Something went wrong.",
+        "errDesc": "There was a problem with your request.",
+        "try": "Try again...",
+        "firstName": "First Name",
+        "lastName": "Last Name",
+        "phone": "Phone",
+        "birthDate": "Birth date",
+        "btn": "Save"
+      },
+      "pwd": {
+        "current": "Current password",
+        "new": "New password",
+        "confirm": "Confirm password",
+        "btn": "save"
+      },
+      "appointmentsUser": {
+        "load": " Loading...",
+        "errTitle": "Uh oh! Something went wrong.",
+        "errDesc": "There was a problem with your request.",
+        "try": "Try again...",
+        "tableHeader": {
+          "service": "Service",
+          "dt": "Date/Time",
+          "master": "Master",
+          "status": "Status"
+        }
+      }
+    },
 
-        "adminAuth": {
-            "user": "User",
-            "pwd": "Password"
+    "appointments": {
+      "services": {
+        "lashes": "Lashes",
+        "nails": "Nails",
+        "brows": "Brows"
+      },
+      "calendar": "Select Date",
+      "availableMasters": "Available Masters",
+      "signup": "Sign up",
+      "sessions": "sessions available on",
+      "form": {
+        "master": "Master:",
+        "date": "Date:",
+        "time": "Time:",
+        "service": "Service:",
+        "select": "Select Time",
+        "start": "Start at",
+        "phone": "Enter your phone number...",
+        "firstName": "First name",
+        "lastName": "Last name",
+        "email": "Email",
+        "birthDate": "Year of birth",
+        "desc": "Optional description for master...",
+        "btn": "Sign up"
+      }
+    },
+
+    "googleSuccess": "Successfully LogedIn With Google.",
+    "googleFail": "Failed LogedIn With Google.",
+
+    "adminAuth": {
+      "user": "User",
+      "pwd": "Password"
+    },
+
+    "adminNav": {
+      "appointments": "Appointments",
+      "masters": "Masters",
+      "logout": "Logout"
+    },
+
+    "adminAppointments": {
+      "status": {
+        "pending": "Pending",
+        "approved": "Approved",
+        "denied": "Denied"
+      },
+      "load": "Loading...",
+      "errTitle": "Uh oh! Something went wrong.",
+      "errDesc": "There was a problem with your request.",
+      "try": "Try again...",
+      "tableHeader": {
+        "service": "Service",
+        "dt": "Date/Time",
+        "client": "Client",
+        "contact": "Contact",
+        "desc": "Description",
+        "master": "Master",
+        "status": "Status",
+        "actions": "Actions"
+      },
+      "btns": {
+        "approve": "Approve",
+        "deny": "Deny"
+      }
+    },
+
+    "adminMasters": {
+      "search": "Search master...",
+      "createBtn": "Create Master",
+      "load": "Loading...",
+      "tableHeaders": {
+        "img": "Image",
+        "master": "Master",
+        "email": "Email",
+        "contact": "Contact",
+        "services": " Services",
+        "actions": "Actions"
+      },
+      "services": {
+        "lashes": "Lashes",
+        "nails": "Nails",
+        "brows": "Brows"
+      },
+      "btn1": "Edit",
+      "btn2": "Delete",
+      "edit": "Edit master",
+      "form": {
+        "dropImg": "Drop the image!",
+        "dragImg": "Click here or drag an image to upload it",
+        "rejectImg": "Image must be less than 1MB and of type png, jpg, or jpeg",
+        "firstName": "First Name",
+        "lastName": "Last Name",
+        "contact": "Contact",
+        "email": "Email",
+        "decs": "Master description...",
+        "services": {
+          "name": "services",
+          "lashes": "Lashes",
+          "brows": "Brows",
+          "nails": "Nails"
         },
+        "save": "Save",
+        "update": "Update"
+      }
+    },
 
-        "adminNav": {
-            "appointments": "Appointments",
-            "masters": "Masters",
-            "logout": "Logout"
-        },
+    "notFound": "<0>Page not found. <2>Go home.</2></0>",
 
-        "adminAppointments": {
-            "status": {
-                "pending": "Pending",
-                "approved": "Approved",
-                "denied": "Denied"
-            },
-            "load": "Loading...",
-            "errTitle": "Uh oh! Something went wrong.",
-            "errDesc": "There was a problem with your request.",
-            "try": "Try again...",
-            "tableHeader": {
-                "service": "Service",
-                "dt": "Date/Time",
-                "client": "Client",
-                "contact": "Contact",
-                "desc": "Description",
-                "master": "Master",
-                "status": "Status",
-                "actions": "Actions"
-            },
-            "btns": {
-                "approve": "Approve",
-                "deny": "Deny"
-            }
-        },
-
-        "adminMasters": {
-            "search": "Search master...",
-            "createBtn": "Create Master",
-            "load": "Loading...",
-            "tableHeaders": {
-                "img": "Image",
-                "master": "Master",
-                "email": "Email",
-                "contact": "Contact",
-                "services": " Services",
-                "actions": "Actions"
-            },
-            "services": {
-                "lashes": "Lashes",
-                "nails": "Nails",
-                "brows": "Brows"
-            },
-            "btn1": "Edit",
-            "btn2": "Delete",
-            "edit": "Edit master",
-            "form": {
-                "dropImg": "Drop the image!",
-                "dragImg": "Click here or drag an image to upload it",
-                "rejectImg": "Image must be less than 1MB and of type png, jpg, or jpeg",
-                "firstName": "First Name",
-                "lastName": "Last Name",
-                "contact": "Contact",
-                "email": "Email",
-                "decs": "Master description...",
-                "services": {
-                    "name": "services",
-                    "lashes": "Lashes",
-                    "brows": "Brows",
-                    "nails": "Nails"
-                },
-                "save": "Save",
-                "update": "Update"
-            }
-        },
-
-        "notFound": "<0>Page not found. <2>Go home.</2></0>"
+    "emailErr": {
+      "title": "Uh oh! Something went wrong.",
+      "desc": "Masters must have unique emails."
     }
+  }
 }
