@@ -15,6 +15,7 @@ import {
 } from "react-router-dom";
 import { Courses } from "@/components/Courses";
 import { usei18nUtil } from "@/utils/usei18nUtil";
+import { Copyright } from "@/components/Copyright";
 
 export const Index: React.FC = () => {
   const [query] = useSearchParams();
@@ -62,6 +63,7 @@ export const Index: React.FC = () => {
       </div>
       <Faq ref={faqRef} />
       <Contacts ref={contactsRef} />
+      <Copyright />
       <ScrollRestoration />
     </BaseLoyout>
   );
