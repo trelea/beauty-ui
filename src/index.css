@@ -58,10 +58,16 @@
   }
 }
 
-@font-face {
+/* CHANGES FOR CELESSE */
+/* @font-face {
   font-family: "Celesse";
   src: url("./assets/Celesse-Regular.woff") format("woff2"),
     url("./assets/Celesse-Regular.woff") format("woff");
+} */
+@font-face {
+  font-family: "Celesse";
+  src: url("./assets/BodoniModa_18pt-SemiBoldItalic.ttf") format("woff2"),
+    url("./assets/BodoniModa_18pt-SemiBoldItalic.ttf") format("woff");
 }
 
 @font-face {

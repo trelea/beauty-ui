@@ -23,7 +23,7 @@ export const Masters: React.FC = () => {
   const [open, setOpen] = React.useState<boolean>();
   const [service, setService] = React.useState<
     "Lashes" | "Brows" | "Nails" | null
-  >("Lashes");
+  >(null);
   const { data, error, isError, refetch } = useGetMasterCardsDetails({
     service,
   });
@@ -44,9 +44,72 @@ export const Masters: React.FC = () => {
     <>
       {(data?.data.length as number) >= 1 && !error && !isError && (
         <div className="px-8 mt-10 md:mt-12 xl:mt-14 2xl:mt-24 space-y-6 md:space-y-7 lg:space-y-8 xl:space-y-9 2xl:space-y-12 md:px-11 xl:px-40 2xl:px-56 relative z-40">
-          <h1 className="text-black font-celesse text-[50px] font-normal md:text-[60px] xl:text-[90px]">
-            {t("home.masters")}
-          </h1>
+          <div>
+            <h1 className="text-black font-celesse text-[50px] font-normal md:text-[60px] xl:text-[90px]">
+              {t("home.masters")}
+            </h1>
+            <Popover open={open} onOpenChange={setOpen}>
+              <PopoverTrigger asChild>
+                <Button
+                  className="shadow-2xl h-10 w-28 rounded-xl text-md md:text-lg"
+                  variant={"outline"}
+                >
+                  {service === null
+                    ? t("home.services.all")
+                    : t(`home.services.${service?.toLocaleLowerCase()}`)}
+                </Button>
+              </PopoverTrigger>
+              <PopoverContent className="w-fit p-2">
+                <Command>
+                  <CommandList>
+                    <CommandGroup>
+                      <CommandItem
+                        value={t("home.services.lashes")}
+                        defaultChecked={service === "Lashes" ? true : false}
+                        onSelect={() => {
+                          setService("Lashes");
+                          setOpen(false);
+                        }}
+                      >
+                        {t("home.services.lashes")}
+                      </CommandItem>
+                      <CommandItem
+                        value={t("home.services.brows")}
+                        defaultChecked={service === "Brows" ? true : false}
+                        onSelect={() => {
+                          setService("Brows");
+                          setOpen(false);
+                        }}
+                      >
+                        {t("home.services.brows")}
+                      </CommandItem>
+                      <CommandItem
+                        value={t("home.services.nails")}
+                        defaultChecked={service === "Nails" ? true : false}
+                        onSelect={() => {
+                          setService("Nails");
+                          setOpen(false);
+                        }}
+                      >
+                        {t("home.services.nails")}
+                      </CommandItem>
+                      <CommandItem
+                        value={t("home.services.all")}
+                        defaultChecked={service === null ? true : false}
+                        onSelect={() => {
+                          setService(null);
+                          setOpen(false);
+                        }}
+                      >
+                        {t("home.services.all")}
+                      </CommandItem>
+                    </CommandGroup>
+                  </CommandList>
+                </Command>
+              </PopoverContent>
+            </Popover>
+          </div>
+
           <Carousel
             opts={{ align: "start" }}
             plugins={[
@@ -90,6 +153,7 @@ export const Masters: React.FC = () => {
             {(data?.data.length as number) !== 0 && (
               <div className="w-full flex justify-center items-center mt-8">
                 <div className="flex gap-4">
+                  {/* PREV */}
                   <CarouselPrevious
                     className={`md:${
                       (data?.data.length as number) > 3 ? "flex" : "hidden"
@@ -97,72 +161,8 @@ export const Masters: React.FC = () => {
                       (data?.data.length as number) > 4 ? "flex" : "hidden"
                     }`}
                   />
-                  <Popover open={open} onOpenChange={setOpen}>
-                    <PopoverTrigger asChild>
-                      <Button
-                        className="shadow-2xl h-10 w-28 rounded-xl text-md md:text-lg"
-                        variant={"outline"}
-                      >
-                        {service === null
-                          ? t("home.services.all")
-                          : t(`home.services.${service?.toLocaleLowerCase()}`)}
-                      </Button>
-                    </PopoverTrigger>
-                    <PopoverContent className="w-fit p-2">
-                      <Command>
-                        <CommandList>
-                          <CommandGroup>
-                            <CommandItem
-                              value={t("home.services.lashes")}
-                              defaultChecked={
-                                service === "Lashes" ? true : false
-                              }
-                              onSelect={() => {
-                                setService("Lashes");
-                                setOpen(false);
-                              }}
-                            >
-                              {t("home.services.lashes")}
-                            </CommandItem>
-                            <CommandItem
-                              value={t("home.services.brows")}
-                              defaultChecked={
-                                service === "Brows" ? true : false
-                              }
-                              onSelect={() => {
-                                setService("Brows");
-                                setOpen(false);
-                              }}
-                            >
-                              {t("home.services.brows")}
-                            </CommandItem>
-                            <CommandItem
-                              value={t("home.services.nails")}
-                              defaultChecked={
-                                service === "Nails" ? true : false
-                              }
-                              onSelect={() => {
-                                setService("Nails");
-                                setOpen(false);
-                              }}
-                            >
-                              {t("home.services.nails")}
-                            </CommandItem>
-                            <CommandItem
-                              value={t("home.services.all")}
-                              defaultChecked={service === null ? true : false}
-                              onSelect={() => {
-                                setService(null);
-                                setOpen(false);
-                              }}
-                            >
-                              {t("home.services.all")}
-                            </CommandItem>
-                          </CommandGroup>
-                        </CommandList>
-                      </Command>
-                    </PopoverContent>
-                  </Popover>
+
+                  {/* NEXT */}
                   <CarouselNext
                     className={`md:${
                       (data?.data.length as number) > 3 ? "flex" : "hidden"
@@ -174,8 +174,6 @@ export const Masters: React.FC = () => {
               </div>
             )}
           </Carousel>
-
-          <div className="absolute -bottom-20"></div>
         </div>
       )}
     </>

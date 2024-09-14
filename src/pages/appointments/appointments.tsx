@@ -2,6 +2,7 @@ import { BrowsAppointments } from "@/components/BrowsAppointments";
 import { Contacts } from "@/components/Contacts";
 import { LashesAppointments } from "@/components/LashesAppointments";
 import { BaseLoyout } from "@/components/Loyout";
+import { MastersCarousel } from "@/components/MastersCarousel";
 import { NailsAppointments } from "@/components/NailsAppointments";
 import { toISO8601DateString } from "@/lib/utils";
 import { useUserStore } from "@/store/store";
@@ -75,6 +76,18 @@ export const Appointments: React.FC = () => {
             {t("appointments.services.brows")}
           </li>
         </ul>
+
+        <div className="w-full">
+          {params.get("lashes") === "true" && (
+            <MastersCarousel service={"Lashes"} />
+          )}
+          {params.get("nails") === "true" && (
+            <MastersCarousel service={"Nails"} />
+          )}
+          {params.get("brows") === "true" && (
+            <MastersCarousel service={"Brows"} />
+          )}
+        </div>
 
         <div className="w-full">
           {params.get("lashes") === "true" &&
