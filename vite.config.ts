@@ -4,10 +4,11 @@ import path from "path";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-    // server: {
-    //     host: "192.168.1.8",
-    //     port: 2000,
-    // },
+    base: '/',
+    preview: {
+        host: true,
+        port: 2005,
+    },
     plugins: [react()],
     resolve: {
         alias: {
